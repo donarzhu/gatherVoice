@@ -30,5 +30,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        this.setSupportActionBar(this.toolbar)
+        this.tabLayout.addTab(this.tabLayout.newTab()?.setText("Tab 1"))
+        this.tabLayout.addTab(this.tabLayout.newTab()?.setText("Tab 2"))
+        this.tabLayout.addTab(this.tabLayout.newTab()?.setText("Tab 3"))
+
     }
 }

@@ -1,57 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.aicyber.gathervoice.Login">
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
-        <android.support.design.widget.TabLayout
-            android:id="@+id/tabLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    </android.support.design.widget.AppBarLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:orientation="vertical">
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="test" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="test" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="test" />
-
-    </LinearLayout>
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/emailButton"
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="vertical"
+      >
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_weight="1"
+       >
+   </LinearLayout>
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_weight="1"
+       >
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:src="@android:drawable/ic_dialog_email"
-        app:elevation="100dp"
-        app:pressedTranslationZ="0dp"
-
+        android:text="账号登录"
+        android:textSize="24sp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         />
-</android.support.design.widget.CoordinatorLayout>
+   </RelativeLayout>
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_weight="4"
+       android:orientation="vertical"
+       >
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="@dimen/login_activity_blank_height"
+           android:layout_marginLeft="@dimen/login_activity_margin"
+           android:layout_marginRight="@dimen/login_activity_margin"
+           >
+           <android.support.v7.widget.AppCompatImageView
+               android:layout_width="@dimen/login_icon_size"
+               android:layout_height="@dimen/login_icon_size"
+               android:src="@android:drawable/sym_action_call"
+               android:layout_gravity="center_vertical"
+               />
+           <EditText
+               android:layout_width="match_parent"
+               android:layout_height="@dimen/login_activity_item_height"
+               android:layout_gravity="center_vertical"
+               android:layout_marginRight="@dimen/login_item_eleavation"
+               android:layout_marginLeft="@dimen/login_item_eleavation"
+               android:background="@drawable/edit_bg"
+               android:inputType="phone"
+               android:hint="手机号"
+               android:elevation="@dimen/login_item_eleavation"
+               />
+       </LinearLayout>
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="@dimen/login_activity_blank_height"
+           android:layout_marginLeft="@dimen/login_activity_margin"
+           android:layout_marginRight="@dimen/login_activity_margin"
+           >
+           <android.support.v7.widget.AppCompatImageView
+               android:layout_width="@dimen/login_icon_size"
+               android:layout_height="@dimen/login_icon_size"
+               android:src="@android:drawable/ic_lock_lock"
+               android:layout_gravity="center_vertical"
+               />
+           <EditText
+               android:layout_width="match_parent"
+               android:layout_height="@dimen/login_activity_item_height"
+               android:layout_gravity="center_vertical"
+               android:layout_marginRight="@dimen/login_item_eleavation"
+               android:layout_marginLeft="@dimen/login_item_eleavation"
+               android:background="@drawable/edit_bg"
+               android:hint="密码"
+               android:elevation="@dimen/login_item_eleavation"
+               />
+       </LinearLayout>
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="@dimen/login_activity_blank_height"
+           android:layout_marginLeft="@dimen/login_activity_margin"
+           android:layout_marginRight="@dimen/login_activity_margin"
+           >
+           <android.support.v7.widget.AppCompatImageView
+               android:layout_width="@dimen/login_icon_size"
+               android:layout_height="@dimen/login_icon_size"
+               android:layout_gravity="center_vertical"
+               />
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textSize="12sp"
+               android:text="忘记密码"
+               />
+       </LinearLayout>
+   </LinearLayout>
+
+  </LinearLayout>
+</android.support.constraint.ConstraintLayout>
