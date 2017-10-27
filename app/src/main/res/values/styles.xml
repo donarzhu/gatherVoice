@@ -1,11 +1,13 @@
-<resources>
+<resources xmlns:mlns="http://schemas.android.com/tools">
 
     <!-- Base application theme."Theme.AppCompat.Light.NoActionBar -->
-    <style name="AppTheme" parent="android:Theme.Material.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:colorButtonNormal">@android:color/holo_blue_light</item>
+        <!-- 允许使用transitions -->
+        <item name="android:windowContentTransitions">true</item>
     </style>
-
 </resources>
