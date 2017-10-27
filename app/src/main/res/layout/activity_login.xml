@@ -4,105 +4,175 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.aicyber.gathervoice.Login">
-  <LinearLayout
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:orientation="vertical"
-      >
-   <LinearLayout
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:layout_weight="1"
-       >
-   </LinearLayout>
-   <RelativeLayout
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:layout_weight="1"
-       >
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="账号登录"
-        android:textSize="24sp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        />
-   </RelativeLayout>
-   <LinearLayout
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:layout_weight="4"
-       android:orientation="vertical"
-       >
-       <LinearLayout
-           android:layout_width="match_parent"
-           android:layout_height="@dimen/login_activity_blank_height"
-           android:layout_marginLeft="@dimen/login_activity_margin"
-           android:layout_marginRight="@dimen/login_activity_margin"
-           >
-           <android.support.v7.widget.AppCompatImageView
-               android:layout_width="@dimen/login_icon_size"
-               android:layout_height="@dimen/login_icon_size"
-               android:src="@android:drawable/sym_action_call"
-               android:layout_gravity="center_vertical"
-               />
-           <EditText
-               android:layout_width="match_parent"
-               android:layout_height="@dimen/login_activity_item_height"
-               android:layout_gravity="center_vertical"
-               android:layout_marginRight="@dimen/login_item_eleavation"
-               android:layout_marginLeft="@dimen/login_item_eleavation"
-               android:background="@drawable/edit_bg"
-               android:inputType="phone"
-               android:hint="手机号"
-               android:elevation="@dimen/login_item_eleavation"
-               />
-       </LinearLayout>
-       <LinearLayout
-           android:layout_width="match_parent"
-           android:layout_height="@dimen/login_activity_blank_height"
-           android:layout_marginLeft="@dimen/login_activity_margin"
-           android:layout_marginRight="@dimen/login_activity_margin"
-           >
-           <android.support.v7.widget.AppCompatImageView
-               android:layout_width="@dimen/login_icon_size"
-               android:layout_height="@dimen/login_icon_size"
-               android:src="@android:drawable/ic_lock_lock"
-               android:layout_gravity="center_vertical"
-               />
-           <EditText
-               android:layout_width="match_parent"
-               android:layout_height="@dimen/login_activity_item_height"
-               android:layout_gravity="center_vertical"
-               android:layout_marginRight="@dimen/login_item_eleavation"
-               android:layout_marginLeft="@dimen/login_item_eleavation"
-               android:background="@drawable/edit_bg"
-               android:hint="密码"
-               android:elevation="@dimen/login_item_eleavation"
-               />
-       </LinearLayout>
-       <LinearLayout
-           android:layout_width="match_parent"
-           android:layout_height="@dimen/login_activity_blank_height"
-           android:layout_marginLeft="@dimen/login_activity_margin"
-           android:layout_marginRight="@dimen/login_activity_margin"
-           >
-           <android.support.v7.widget.AppCompatImageView
-               android:layout_width="@dimen/login_icon_size"
-               android:layout_height="@dimen/login_icon_size"
-               android:layout_gravity="center_vertical"
-               />
-           <TextView
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:textSize="12sp"
-               android:text="忘记密码"
-               />
-       </LinearLayout>
-   </LinearLayout>
+    tools:context="com.aicyber.gathervoice.Login"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp"
+        tools:ignore="MissingConstraints"
+        android:transitionName="loginPage"
+        android:id="@+id/loginView"
+        >
 
-  </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"></LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:inputType="phone"
+                android:text="账号登录"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginLeft="@dimen/login_activity_margin"
+                android:layout_marginRight="@dimen/login_activity_margin">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:layout_width="@dimen/login_icon_size"
+                    android:layout_height="@dimen/login_icon_size"
+                    android:src="@drawable/login_phone"
+                    android:layout_gravity="center_vertical"
+                    />
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/inputNameWrapper"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="11"
+                    android:elevation="@dimen/login_item_eleavation"
+                    >
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/inputName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="phone"
+                        android:imeOptions="actionNext"
+                        android:hint="手机号码" />
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/login_activity_blank_height"
+                android:layout_marginLeft="@dimen/login_activity_margin"
+                android:layout_marginRight="@dimen/login_activity_margin"
+                android:orientation="horizontal"
+                >
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:layout_width="@dimen/login_icon_size"
+                    android:layout_height="@dimen/login_icon_size"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/login_pwd" />
+
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/inputPwdWrapper"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:passwordToggleEnabled="false"
+                    android:elevation="@dimen/login_item_eleavation"
+                    >
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/inputPwd"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword"
+                        android:imeOptions="actionDone"
+                        android:hint="密码" />
+                </android.support.design.widget.TextInputLayout>
+           </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/login_activity_margin"
+                android:layout_marginRight="@dimen/login_activity_margin"
+                >
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/blankImage"
+                    android:layout_width="@dimen/login_icon_size"
+                    android:layout_height="@dimen/login_icon_size"
+                    android:layout_centerVertical="true" />
+
+                <TextView
+                    android:id="@+id/buttonRegister"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/login_item_eleavation"
+                    android:layout_toRightOf="@id/blankImage"
+                    android:autoLink="all"
+                    android:textColor="@color/blue"
+                    android:text="注册账号"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/buttonForget"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/login_activity_item_height"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/login_item_eleavation"
+                    android:autoLink="all"
+                    android:textColor="@color/blue"
+                    android:text="忘记密码"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:orientation="horizontal"
+                android:layout_marginLeft="@dimen/login_activity_margin"
+                android:layout_marginRight="@dimen/login_activity_margin"
+                >
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/blankImage1"
+                    android:layout_width="@dimen/login_icon_size"
+                    android:layout_height="@dimen/login_icon_size"
+                    android:layout_centerVertical="true" />
+                <android.support.v7.widget.AppCompatButton
+                    android:id="@+id/loginButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:elevation="@dimen/login_item_eleavation"
+                    android:text="登录"
+
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>
