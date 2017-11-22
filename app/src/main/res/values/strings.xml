@@ -12,4 +12,11 @@
             第一次接触CoordinatorLayout 你可能有这些疑问，CoordinatorLayout 到底是个什么玩意儿呢？它到底能帮我们做什么？我们要了解它，肯定是先看官方文档了。文档的第一句话就非常醒目： CoordinatorLayout is a super-powered FrameLayout ,非常明了，CoordinatorLayout 继承于ViewGroup,它就是一个超级强大Framelayout。CoordinatorLayout的作用就是协调子View。它有两种使用场景作者：依然范特稀西链接來源简书著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。第一次接触CoordinatorLayout 你可能有这些疑问，CoordinatorLayout 到底是个什么玩意儿呢？它到底能帮我们做什么？我们要了解它，肯定是先看官方文档了。文档的第一句话就非常醒目： CoordinatorLayout is a super-powered FrameLayout ,非常明了，CoordinatorLayout 继承于ViewGroup,它就是一个超级强大Framelayout。CoordinatorLayout的作用就是协调子View。它有两种使用场景作者：依然范特稀西链接來源：简书著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 
     </string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="error_no_sdcard">没有SD卡，无法存储录音数据</string>
+    <string name="error_state_record">正在录音中，请先停止录音</string>
+    <string name="error_unknown">无法识别的错误</string>
+
 </resources>

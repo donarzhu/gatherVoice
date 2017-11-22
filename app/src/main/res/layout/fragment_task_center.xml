@@ -1,0 +1,45 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.aicyber.gathervoice.TaskCenterFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="10dp"
+            android:background="@color/black"
+            app:tabIndicatorHeight="4dp"
+            app:tabTextAppearance="@android:style/TextAppearance.Holo.Medium"
+            app:tabSelectedTextColor="@color/holo_blue_bright"
+            app:tabTextColor="@color/gray"
+            app:tabIndicatorColor="@color/holo_blue_bright"
+            >
+
+            <android.support.design.widget.TabItem
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="语音任务" />
+
+            <android.support.design.widget.TabItem
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="校对任务" />
+        </android.support.design.widget.TabLayout>
+
+        <ListView
+            android:id="@+id/list_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/global_bg"
+            tools:context="com.aicyber.gathervoice.TaskCenterFragment" />
+    </LinearLayout>
+\</FrameLayout>

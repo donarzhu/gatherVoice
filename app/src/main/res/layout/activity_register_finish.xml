@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.aicyber.gathervoice.Page.RegisterPhone">
-
+    tools:context="com.aicyber.gathervoice.Page.RegisterFinish">
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -22,14 +21,14 @@
                 android:layout_height="40dp"
                 android:layout_centerVertical="true"
                 android:src="@drawable/back_light"
-                android:transitionName="loginPage"
-                android:id="@+id/backButton"
+                android:transitionName="regPage"
+                android:id="@+id/backRegButton"
                 />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="注册账号"
+                android:text="个人信息"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:textColor="@color/white"
@@ -44,7 +43,6 @@
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp"
         tools:ignore="MissingConstraints"
-        android:transitionName="regPage"
         android:id="@+id/RegView"
         android:background="@color/white"
         >
@@ -62,10 +60,9 @@
             android:layout_marginTop="20dp"
             >
 
-
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="82dp"
+                android:layout_height="75dp"
                 android:layout_marginLeft="@dimen/login_activity_margin"
                 android:layout_marginRight="@dimen/login_activity_margin"
                 android:orientation="horizontal"
@@ -78,30 +75,83 @@
                     android:layout_marginTop="@dimen/normal_icon_marginTop"
                     android:tint="@color/gray"
                     />
+
                 <android.support.design.widget.TextInputLayout
-                    android:id="@+id/inputNameWrapper"
+                    android:id="@+id/inputUserNameWrapper"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    app:counterEnabled="true"
-                    app:counterMaxLength="11"
                     android:elevation="2dp"
-                    android:textColorHint="@color/gray"
-                    >
+                    android:textColorHint="@color/gray">
 
                     <android.support.design.widget.TextInputEditText
-                        android:id="@+id/inputName"
+                        android:id="@+id/inputUserName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="请输入邮箱/手机号"
+                        android:hint="请输入用户名"
                         android:imeOptions="actionNext"
                         android:inputType="phone"
-                        android:textColor="@color/gray"
+                        android:textColor="@color/gray" />
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:layout_marginLeft="@dimen/login_activity_margin"
+                android:layout_marginRight="@dimen/login_activity_margin"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="@dimen/normal_icon_size"
+                    android:layout_height="@dimen/normal_icon_size"
+                    android:src="@drawable/sex"
+                    android:layout_marginTop="@dimen/normal_icon_marginTop"
+                    android:tint="@color/gray"
+                    />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <RadioGroup
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_centerHorizontal="true"
+                        android:id="@+id/radioGroup"
+                        android:layout_marginTop="10dp"
+                        >
+                        <RadioButton
+                            android:id="@+id/femaleGroupID"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="女"
+                            android:textSize="20sp"
+                            android:layout_gravity="center_vertical|center_horizontal"
+                            android:textColor="@color/gray"
+                            android:buttonTint="@color/gray"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/maleGroupID"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical|center_horizontal"
+                            android:layout_marginLeft="100dp"
+                            android:text="男"
+                            android:textColor="@color/gray"
+                            android:buttonTint="@color/gray"
+                            android:textSize="20sp" />
+                    </RadioGroup>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/black"
+                        android:layout_below="@+id/radioGroup"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="3dp"
                         />
-                </android.support.design.widget.TextInputLayout>
+                </RelativeLayout>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_height="75dp"
                 android:layout_marginLeft="@dimen/login_activity_margin"
                 android:layout_marginRight="@dimen/login_activity_margin"
                 android:orientation="horizontal"
@@ -110,45 +160,31 @@
                 <ImageView
                     android:layout_width="@dimen/normal_icon_size"
                     android:layout_height="@dimen/normal_icon_size"
-                    android:src="@drawable/i_code"
-                    android:layout_marginTop="20dp"
+                    android:src="@drawable/age"
+                    android:layout_marginTop="@dimen/normal_icon_marginTop"
                     android:tint="@color/gray"
                     />
+
                 <android.support.design.widget.TextInputLayout
-                    android:id="@+id/getCodeWarp"
-                    android:layout_width="0dip"
+                    android:id="@+id/inputAgeWrapper"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:elevation="2dp"
-                    android:textColorHint="@color/gray"
-                    android:layout_weight="1"
-                    >
+                    android:textColorHint="@color/gray">
 
                     <android.support.design.widget.TextInputEditText
-                        android:id="@+id/getCode"
+                        android:id="@+id/inputAge"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="phone"
+                        android:hint="请输入年龄"
                         android:imeOptions="actionNext"
-                        android:textColor="@color/gray"
-                        android:hint="请获取验证码" />
+                        android:inputType="phone"
+                        android:textColor="@color/gray" />
                 </android.support.design.widget.TextInputLayout>
-                <Button
-                    android:layout_width="100dp"
-                    android:layout_height="20dp"
-                    android:background="@drawable/myrect"
-                    android:textColor="@color/light_blue"
-                    android:textAlignment="center"
-                    android:textSize="15sp"
-                    android:text="获取验证码"
-                    android:layout_marginTop="25dp"
-                    android:elevation="10dp"
-                    />
-
             </LinearLayout>
-
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_height="75dp"
                 android:layout_marginLeft="@dimen/login_activity_margin"
                 android:layout_marginRight="@dimen/login_activity_margin"
                 android:orientation="horizontal"
@@ -157,33 +193,31 @@
                 <ImageView
                     android:layout_width="@dimen/normal_icon_size"
                     android:layout_height="@dimen/normal_icon_size"
-                    android:src="@drawable/password"
-                    android:layout_marginTop="20dp"
+                    android:src="@drawable/native_place"
+                    android:layout_marginTop="@dimen/normal_icon_marginTop"
                     android:tint="@color/gray"
                     />
 
                 <android.support.design.widget.TextInputLayout
-                    android:id="@+id/inputPwdWrapper"
+                    android:id="@+id/inputPlaceWrapper"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    app:passwordToggleEnabled="false"
                     android:elevation="2dp"
-                    android:textColorHint="@color/gray"
-                    >
+                    android:textColorHint="@color/gray">
 
                     <android.support.design.widget.TextInputEditText
-                        android:id="@+id/inputPwd"
+                        android:id="@+id/inputPlace"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="textPassword"
-                        android:imeOptions="actionDone"
-                        android:textColor="@color/gray"
-                        android:hint="请输入密码" />
+                        android:hint="请输入籍贯"
+                        android:imeOptions="actionNext"
+                        android:inputType="phone"
+                        android:textColor="@color/gray" />
                 </android.support.design.widget.TextInputLayout>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_height="75dp"
                 android:layout_marginLeft="@dimen/login_activity_margin"
                 android:layout_marginRight="@dimen/login_activity_margin"
                 android:orientation="horizontal"
@@ -192,31 +226,28 @@
                 <ImageView
                     android:layout_width="@dimen/normal_icon_size"
                     android:layout_height="@dimen/normal_icon_size"
-                    android:src="@drawable/password"
-                    android:layout_marginTop="20dp"
+                    android:src="@drawable/id_number"
+                    android:layout_marginTop="@dimen/normal_icon_marginTop"
                     android:tint="@color/gray"
                     />
 
                 <android.support.design.widget.TextInputLayout
-                    android:id="@+id/rePwdWrapper"
+                    android:id="@+id/inputIDWrapper"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    app:passwordToggleEnabled="false"
                     android:elevation="2dp"
-                    android:textColorHint="@color/gray"
-                    >
+                    android:textColorHint="@color/gray">
 
                     <android.support.design.widget.TextInputEditText
-                        android:id="@+id/reinputPwd"
+                        android:id="@+id/inputID"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="textPassword"
-                        android:imeOptions="actionDone"
-                        android:textColor="@color/gray"
-                        android:hint="请确认密码" />
+                        android:hint="请输入身份证号码（选填)"
+                        android:imeOptions="actionNext"
+                        android:inputType="phone"
+                        android:textColor="@color/gray" />
                 </android.support.design.widget.TextInputLayout>
             </LinearLayout>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
@@ -226,17 +257,15 @@
                 >
 
                 <android.support.v7.widget.AppCompatButton
-                    android:id="@+id/nextButton"
+                    android:id="@+id/registerButton"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:elevation="@dimen/login_item_elevation"
                     android:textSize="20sp"
                     android:textColor="@color/white"
-                    android:elevation="@dimen/login_item_elevation"
-                    android:text="下一步" />
+                    android:text="注册" />
 
             </LinearLayout>
-
         </LinearLayout>
-
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

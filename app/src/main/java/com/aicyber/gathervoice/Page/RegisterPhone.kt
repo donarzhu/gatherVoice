@@ -1,13 +1,11 @@
-package com.aicyber.gathervoice
+package com.aicyber.gathervoice.Page
 
 import android.app.ActivityOptions
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.transition.Explode
-import android.util.AttributeSet
+import com.aicyber.gathervoice.R
 import kotlinx.android.synthetic.main.activity_register_phone.*
-import java.time.Duration
 
 class RegisterPhone : AppCompatActivity() {
 
@@ -17,8 +15,11 @@ class RegisterPhone : AppCompatActivity() {
         //window.enterTransition = Explode().setDuration(2000)
         //window.exitTransition = Explode().setDuration(2000)
         backButton.setOnClickListener{
-            startActivity(Intent(this, Login::class.java),
-                    ActivityOptions.makeSceneTransitionAnimation(this, backButton, "loginPage")
+            this.finish()
+        }
+        nextButton.setOnClickListener{
+            startActivity(Intent(this,RegisterFinish::class.java),
+                    ActivityOptions.makeSceneTransitionAnimation(this, nextButton, "regPage")
                             .toBundle())
 
         }

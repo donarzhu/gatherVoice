@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.aicyber.gathervoice.Page.RegisterPhone">
-
+    tools:context="com.aicyber.gathervoice.Page.ForgetPage">
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -29,7 +28,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="注册账号"
+                android:text="忘记密码"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:textColor="@color/white"
@@ -44,7 +43,7 @@
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp"
         tools:ignore="MissingConstraints"
-        android:transitionName="regPage"
+        android:transitionName="forgetPage"
         android:id="@+id/RegView"
         android:background="@color/white"
         >
@@ -148,77 +147,6 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_marginLeft="@dimen/login_activity_margin"
-                android:layout_marginRight="@dimen/login_activity_margin"
-                android:orientation="horizontal"
-                >
-
-                <ImageView
-                    android:layout_width="@dimen/normal_icon_size"
-                    android:layout_height="@dimen/normal_icon_size"
-                    android:src="@drawable/password"
-                    android:layout_marginTop="20dp"
-                    android:tint="@color/gray"
-                    />
-
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/inputPwdWrapper"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:passwordToggleEnabled="false"
-                    android:elevation="2dp"
-                    android:textColorHint="@color/gray"
-                    >
-
-                    <android.support.design.widget.TextInputEditText
-                        android:id="@+id/inputPwd"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="textPassword"
-                        android:imeOptions="actionDone"
-                        android:textColor="@color/gray"
-                        android:hint="请输入密码" />
-                </android.support.design.widget.TextInputLayout>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_marginLeft="@dimen/login_activity_margin"
-                android:layout_marginRight="@dimen/login_activity_margin"
-                android:orientation="horizontal"
-                >
-
-                <ImageView
-                    android:layout_width="@dimen/normal_icon_size"
-                    android:layout_height="@dimen/normal_icon_size"
-                    android:src="@drawable/password"
-                    android:layout_marginTop="20dp"
-                    android:tint="@color/gray"
-                    />
-
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/rePwdWrapper"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:passwordToggleEnabled="false"
-                    android:elevation="2dp"
-                    android:textColorHint="@color/gray"
-                    >
-
-                    <android.support.design.widget.TextInputEditText
-                        android:id="@+id/reinputPwd"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="textPassword"
-                        android:imeOptions="actionDone"
-                        android:textColor="@color/gray"
-                        android:hint="请确认密码" />
-                </android.support.design.widget.TextInputLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:orientation="horizontal"
                 android:layout_marginLeft="@dimen/login_activity_margin"
@@ -226,13 +154,13 @@
                 >
 
                 <android.support.v7.widget.AppCompatButton
-                    android:id="@+id/nextButton"
+                    android:id="@+id/goResetButton"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:textSize="20sp"
                     android:textColor="@color/white"
                     android:elevation="@dimen/login_item_elevation"
-                    android:text="下一步" />
+                    android:text="重置密码" />
 
             </LinearLayout>
 

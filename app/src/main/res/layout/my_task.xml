@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="3dp"
+        android:background="@drawable/myrect"
+        android:elevation="10dp"
+        android:orientation="vertical"
+        >
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            >
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <ImageView
+                    android:id="@+id/type_image"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/voice"
+                    />
+                <TextView
+                    android:id="@+id/my_task_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:text="任务名称"
+                    android:textSize="16sp"
+                    android:layout_alignParentLeft="true"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="10dp"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="￥"
+                    android:textSize="16sp"
+                    android:textColor="@color/primary_darker"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/my_task_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:textSize="16sp"
+                    android:text="900.00"
+                    android:textColor="@color/primary_darker"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/my_task_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:text="任务内容介绍"
+            android:textColor="@color/monsoon" />
+
+        <TextView
+            android:id="@+id/my_task_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="截止日期"
+            android:layout_marginBottom="5dp"
+            android:textColor="@color/holo_blue_bright" />
+
+    </LinearLayout>
+</LinearLayout>

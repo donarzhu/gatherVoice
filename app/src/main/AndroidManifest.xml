@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.aicyber.gathervoice">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,7 +14,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Login">
+        <activity
+            android:name=".Page.Login"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -18,8 +25,19 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:label="@string/title_activity_main" />
-        <activity android:name=".RegisterPhone"></activity>
+            android:label="@string/title_activity_main"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Page.RegisterPhone"
+            android:screenOrientation="portrait" />
+        <activity android:name=".Page.RegisterFinish" />
+        <activity android:name=".Page.ForgetPage" />
+        <activity android:name=".Page.ResetPwdPage" />
+        <activity android:name=".Page.TaskInfoPage" />
+        <activity android:name=".Page.voiceTaskListPage" />
+        <activity android:name=".Page.checkTaskPage" />
+        <activity android:name=".Page.Record" />
+        <activity android:name=".verifyItemPage"></activity>
     </application>
 
 </manifest>

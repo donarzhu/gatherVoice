@@ -5,36 +5,170 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:transitionName="taskPage"
     tools:context="com.aicyber.gathervoice.MainActivity">
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/appbar_layout"
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
-            app:title="标题"
-            app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"/>
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:minHeight="?android:attr/actionBarSize"
-            android:background="@drawable/title"
-            app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
-            />
-    </android.support.design.widget.AppBarLayout>
+            android:elevation="5dp">
 
-    <android.support.v4.widget.NestedScrollView
-        android:id="@+id/nested_scrollview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        >
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/text"/>
-    </android.support.v4.widget.NestedScrollView>
+            <android.support.v7.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="@dimen/main_panel_margin"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/main_window_name"
+                    android:id="@+id/title_text"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    />
+            </android.support.v7.widget.LinearLayoutCompat>
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@null"
+                app:layout_scrollFlags="scroll|enterAlways"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+                app:title=""></android.support.v7.widget.Toolbar>
+
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/main_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="0.0dip"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_weight="0"
+            android:background="@color/black"
+            android:elevation="8dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/taskCenterButton"
+                android:layout_width="0.0dip"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginBottom="@dimen/main_panel_margin"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="@dimen/main_panel_margin"
+                android:layout_weight="1.0"
+                android:background="@drawable/myrect"
+                android:backgroundTint="@color/black"
+                android:elevation="10dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/taskCenterImage"
+                    android:layout_width="@dimen/icon_width"
+                    android:layout_height="@dimen/icon_height"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:elevation="10dp"
+                    android:src="@drawable/task_center"
+                    android:tint="@color/holo_blue_bright" />
+
+                <TextView
+                    android:id="@+id/taskCenterText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="10dp"
+                    android:elevation="10dp"
+                    android:text="任务中心"
+                    android:textColor="@color/holo_blue_bright" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/myTaskButton"
+                android:layout_width="0.0dip"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginBottom="@dimen/main_panel_margin"
+                android:layout_marginLeft="1dp"
+                android:layout_marginRight="1dp"
+                android:layout_marginTop="@dimen/main_panel_margin"
+                android:layout_weight="1.0"
+                android:background="@drawable/myrect"
+                android:backgroundTint="@color/black"
+                android:elevation="10dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/myTaskImage"
+                    android:layout_width="@dimen/icon_width"
+                    android:layout_height="@dimen/icon_height"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:elevation="10dp"
+                    android:src="@drawable/my_task"
+                    android:tint="@color/gray" />
+
+                <TextView
+                    android:id="@+id/myTaskText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="10dp"
+                    android:elevation="10dp"
+                    android:text="我的任务"
+                    android:textColor="@color/gray" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/personButton"
+                android:layout_width="0.0dip"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginBottom="@dimen/main_panel_margin"
+                android:layout_marginRight="2dp"
+                android:layout_marginTop="@dimen/main_panel_margin"
+                android:layout_weight="1.0"
+                android:background="@drawable/myrect"
+                android:backgroundTint="@color/black"
+                android:elevation="10dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/personImage"
+                    android:layout_width="@dimen/icon_width"
+                    android:layout_height="@dimen/icon_height"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:elevation="10dp"
+                    android:src="@drawable/personal_center_un"
+                    android:tint="@color/gray" />
+
+                <TextView
+                    android:id="@+id/personText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="10dp"
+                    android:elevation="10dp"
+                    android:text="个人中心"
+                    android:textColor="@color/gray" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>

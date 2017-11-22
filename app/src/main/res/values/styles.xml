@@ -1,7 +1,7 @@
 <resources xmlns:mlns="http://schemas.android.com/tools">
 
     <!-- Base application theme."Theme.AppCompat.Light.NoActionBar -->
-    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -9,5 +9,12 @@
         <item name="android:colorButtonNormal">@android:color/holo_blue_light</item>
         <!-- 允许使用transitions -->
         <item name="android:windowContentTransitions">true</item>
+    </style>
+    <style name="MyEditText" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">@color/white</item>
+        <item name="colorControlActivated">@color/colorAccent</item>
+    </style>
+    <style name="HintAppearance" parent="TextAppearance.AppCompat">
+        　　<item name="android:textColor">@color/gray</item>
     </style>
 </resources>

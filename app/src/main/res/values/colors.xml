@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#3f51b5</color>
+    <color name="colorPrimaryDark">#303f9f</color>
     <color name="colorAccent">#ff4081</color>
     <color name="primary_darker">#CC1D1D</color>
     <color name="red" >#FF0000</color>
@@ -14,7 +14,7 @@
     <color name="jumbo">#888888</color>
     <color name="aluminum">#999999</color>
     <color name="base">#AAAAAA</color>
-    <color name="iron">#CCCCCC</color>
+    <color name="iron">#cccccc</color>
     <color name="global_bg">#eeeff3</color>
     <color name="light_blue">#6593cb</color>
     <color name="gray">#aaaaaa</color>
@@ -22,4 +22,5 @@
     <color name="tbtitle">#FF0000</color>
     <color name="toolbar_bg">#FAFBFD</color>
     <color name="blue">#0000FF</color>
+    <color name="holo_blue_bright">#ff00ddff</color>
 </resources>
