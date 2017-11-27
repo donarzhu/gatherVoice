@@ -20,9 +20,10 @@ import android.os.Build
 import android.support.annotation.RequiresApi
 import android.widget.Toast
 import android.content.DialogInterface
+import android.os.Handler
+import android.os.Message
 import com.aicyber.gathervoice.MainActivity
-
-
+import com.aicyber.gathervoice.control.global
 
 
 class Login : AppCompatActivity() {
@@ -30,6 +31,28 @@ class Login : AppCompatActivity() {
     var bCanRecord = false
     var bCanWrite = false
     var bNet = false
+    var handler: Handler = object : Handler() {
+        override fun handleMessage(msg: Message?) {
+            try {
+                when(msg!!.what)
+                {
+                    5->{
+                        startActivity(Intent(this@Login, MainActivity::class.java),ActivityOptions.makeSceneTransitionAnimation(this@Login).toBundle())
+                        finish()
+                    }
+                    6->
+                    {
+                        Toast.makeText(this@Login,"用户名或密码错误",Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+            catch (e:Exception)
+            {
+                println(e.message)
+            }
+        }
+    }
+
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -102,8 +125,7 @@ class Login : AppCompatActivity() {
             }
             if(error)
                 return@setOnClickListener
-            startActivity(Intent(this, MainActivity::class.java),ActivityOptions.makeSceneTransitionAnimation(this).toBundle())
-            finish()
+            global.login(handler,phoneNo,pwd)
         }
 
         buttonRegister.setOnClickListener{

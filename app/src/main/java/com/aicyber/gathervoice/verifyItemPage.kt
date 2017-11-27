@@ -2,6 +2,10 @@ package com.aicyber.gathervoice
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Message
+import android.widget.Toast
+import com.aicyber.gathervoice.control.global
 import com.aicyber.gathervoice.data.VerifyItemInfo
 import kotlinx.android.synthetic.main.activity_verify_item_page.*
 
@@ -10,6 +14,7 @@ class verifyItemPage : AppCompatActivity() {
     var itemsTotal:Int = 0
     var pos:Int = 0
     var taskName = ""
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +34,7 @@ class verifyItemPage : AppCompatActivity() {
         {
             var message = ex.message
         }
+
         backButton.setOnClickListener{
             finish()
         }

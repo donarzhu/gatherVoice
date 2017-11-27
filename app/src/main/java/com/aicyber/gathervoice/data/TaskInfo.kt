@@ -83,3 +83,40 @@ public class TaskInfo() : Parcelable {
         }
     }
 }
+
+public class VerifyTask
+{
+    var id:Int = 0
+    var receiver:Int = 0
+    var task:TaskInfo?=null
+    var total:Int = 0                 // 录音条目总数
+    var finish:Int = 0                // 录音条目完成数
+    var verify_total:Int = 0          // 认领验证任务总人数
+    var verify_finish =  0         // 认领验证任已完成人数
+    var accept_at:String= ""      // 录音任务认领时间
+    var finish_at:String = ""       // 录音任务完成时间
+}
+
+public class MyTaskInfo
+{
+    var id:Int =0
+    var receiver:Int =0
+    var task:TaskInfo?=null
+    var total:Int =0         //总项目数
+    var finish:Int=0        //其中已录完项目数
+    var accept_at:String = "" // "2017-10-11T00:57:20.196756",  //认领录音任务时间
+    var finish_at:String? = null   //全部录完时间, null为未全部录完
+
+}
+
+public class MyVerityTask
+{
+    var id:Int = 0        // verify_id
+    var verifier:Int =0   // 验证人id，是当前用户id
+    var todo:VerifyTask?=null
+    var total:Int =0             // 验证任务条目总数
+    var finish:Int = 0            // 验证任务条目已完成数
+    var accept_at:String=""  // "2017-10-15T13:56:38.326007",  // 接收验证任务时间
+    var finish_at:String?= null       // 完成验证任务时间
+
+}

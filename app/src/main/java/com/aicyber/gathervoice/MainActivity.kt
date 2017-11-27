@@ -1,9 +1,13 @@
 package com.aicyber.gathervoice
 
 import android.annotation.SuppressLint
+import android.app.ActivityOptions
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
+import android.os.Message
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
@@ -15,6 +19,7 @@ import android.support.v7.app.AppCompatActivity
 import android.transition.Fade
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 
 @Suppress("DEPRECATION")

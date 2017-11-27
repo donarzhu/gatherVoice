@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
+import android.os.Message
 import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -12,7 +14,11 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import com.aicyber.gathervoice.Page.checkTaskPage
 import com.aicyber.gathervoice.Page.voiceTaskListPage
+import com.aicyber.gathervoice.control.global
+import com.aicyber.gathervoice.data.MyTaskInfo
+import com.aicyber.gathervoice.data.MyVerityTask
 import com.aicyber.gathervoice.data.TaskInfo
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_my_task.*
 @Suppress("DEPRECATION")
 /**
@@ -24,6 +30,60 @@ import kotlinx.android.synthetic.main.fragment_my_task.*
  * create an instance of this fragment.
  */
 class MyTaskFragment : Fragment() {
+    private inner class GetMyTasksResult{
+        var count:Int = 0
+        var next:String?=null
+        var previous:String?=null
+        var results:Array<MyTaskInfo>?=null
+    }
+    private  inner  class GetMyVerifyListResult{
+        var count:Int = 0
+        var next:String?=null
+        var previous:String?=null
+        var results:Array<MyVerityTask>?=null
+    }
+    private var myTasks:Array<MyTaskInfo>?=null
+    private var myVeritys:Array<MyVerityTask>?=null
+
+    var handler: Handler = object : Handler() {
+        override fun handleMessage(msg: Message?) {
+            try {
+                when(msg!!.what)
+                {
+                    10->{
+                        var retData = msg.data.get("info").toString()
+                        val retMsg: GetMyVerifyListResult? = Gson().fromJson(retData, GetMyVerifyListResult::class.java)
+                        if(retMsg!=null && retMsg!!.results!=null)
+                        {
+                            myVeritys = retMsg!!.results
+                            for(task:MyVerityTask in retMsg!!.results!!)
+                                adapter!!.tasks.add(task.todo!!.task!!)
+                        }
+                        my_tasks.adapter = adapter
+                        adapter!!.notifyDataSetChanged()
+                    }
+                    9->{
+                        var retData = msg.data.get("info").toString()
+                        val retMsg: GetMyTasksResult? = Gson().fromJson(retData, GetMyTasksResult::class.java)
+                        if(retMsg!=null && retMsg!!.results!=null)
+                        {
+                            myTasks = retMsg!!.results
+                            for(task:MyTaskInfo in retMsg!!.results!!)
+                                adapter!!.tasks.add(task.task!!)
+                        }
+                        my_tasks.adapter = adapter
+                        adapter!!.notifyDataSetChanged()
+
+                    }
+
+                }
+            }
+            catch (e:Exception)
+            {
+                println(e.message)
+            }
+        }
+    }
 
     // TODO: Rename and change types of parameters
     private var mParam1: String? = null
@@ -118,7 +178,8 @@ class MyTaskFragment : Fragment() {
         listType=0
         adapter!!.tasks.clear()
         adapter!!.listType = adapter!!.VoiceTypeList
-        var i:Int = 0
+        global.getMyTaskList(handler)
+        /*var i:Int = 0
         while ( i< 10)
         {
             var taskInfo = TaskInfo()
@@ -128,13 +189,15 @@ class MyTaskFragment : Fragment() {
         }
         //重置滑动位置
         my_tasks.adapter = adapter
-        adapter!!.notifyDataSetChanged()
+        adapter!!.notifyDataSetChanged()*/
     }
 
     private fun GetCheckTaskList(){
         listType=1
         adapter!!.tasks.clear()
         adapter!!.listType = adapter!!.CheckTypeList
+        global.getMyVerifyList(handler)
+        /*
         var i:Int = 0
         while ( i< 10)
         {
@@ -142,9 +205,7 @@ class MyTaskFragment : Fragment() {
             taskInfo.name = "校对任务" + (i+1)
             adapter!!.tasks.add(taskInfo)
             i++
-        }
-        my_tasks.adapter = adapter
-        adapter!!.notifyDataSetChanged()
+        }*/
 
     }
     // TODO: Rename method, update argument and hook method into UI event

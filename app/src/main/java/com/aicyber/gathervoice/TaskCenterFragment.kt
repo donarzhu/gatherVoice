@@ -5,6 +5,8 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
+import android.os.Message
 import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -13,7 +15,12 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ListView
 import android.widget.TabHost
+import android.widget.Toast
+import com.aicyber.gathervoice.Page.RegisterPhone
+import com.aicyber.gathervoice.control.global
 import com.aicyber.gathervoice.data.TaskInfo
+import com.aicyber.gathervoice.data.VerifyTask
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_task_center.*
 import kotlinx.android.synthetic.main.task_card.*
 import kotlinx.android.synthetic.main.task_card.view.*
@@ -29,6 +36,19 @@ import kotlinx.android.synthetic.main.task_card.view.*
  * create an instance of this fragment.
  */
 class TaskCenterFragment : Fragment() {
+    private inner class GetTaskResult{
+        var count:Int = 0
+        var next:String?=null
+        var previous:String?=null
+        var results:Array<TaskInfo>?=null
+    }
+
+    private inner class GetVerifyTaskResult{
+        var count:Int = 0
+        var next:String?=null
+        var previous:String?=null
+        var results:Array<VerifyTask>?=null
+    }
 
     // TODO: Rename and change types of parameters
     private var mParam1: String? = null
@@ -37,7 +57,43 @@ class TaskCenterFragment : Fragment() {
     private var adapter:TaskViewAdapter? = null
 
     private var mListener: OnFragmentInteractionListener? = null
-
+    var verifyTasks:Array<VerifyTask>?=null
+    var handler: Handler = object : Handler() {
+        override fun handleMessage(msg: Message?) {
+            try {
+                when(msg!!.what)
+                {
+                    7->{
+                        var retData = msg.data.get("info").toString()
+                        val retMsg: GetTaskResult? = Gson().fromJson(retData, GetTaskResult::class.java)
+                        if(retMsg!=null && retMsg!!.results!=null)
+                        {
+                            for(task:TaskInfo in retMsg!!.results!!)
+                                adapter!!.tasks.add(task)
+                        }
+                        list_view.adapter = adapter
+                        adapter!!.notifyDataSetChanged()
+                    }
+                    8->{
+                        var retData = msg.data.get("info").toString()
+                        val retMsg: GetVerifyTaskResult? = Gson().fromJson(retData, GetVerifyTaskResult::class.java)
+                        if(retMsg!=null && retMsg!!.results!=null)
+                        {
+                            verifyTasks = retMsg!!.results
+                            for(task:VerifyTask in retMsg!!.results!!)
+                                adapter!!.tasks.add(task.task!!)
+                        }
+                        list_view.adapter = adapter
+                        adapter!!.notifyDataSetChanged()
+                    }
+                }
+            }
+            catch (e:Exception)
+            {
+                println(e.message)
+            }
+        }
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (arguments != null) {
@@ -54,6 +110,11 @@ class TaskCenterFragment : Fragment() {
     private fun GetVoiceTaskList() {
         adapter!!.tasks.clear()
         adapter!!.listType = adapter!!.VoiceTypeList
+        global.getVoiceTaskList(handler)
+    }
+
+    /*private fun domeGetVoiceTaskList()
+    {
         var i:Int = 0
         while ( i< 10)
         {
@@ -63,13 +124,13 @@ class TaskCenterFragment : Fragment() {
             i++
         }
         //重置滑动位置
-        list_view.adapter = adapter
-        adapter!!.notifyDataSetChanged()
-    }
+    }*/
 
     private fun GetCheckTaskList(){
         adapter!!.tasks.clear()
         adapter!!.listType = adapter!!.CheckTypeList
+        global.getVerifyTaskList(handler)
+        /*
         var i:Int = 0
         while ( i< 10)
         {
@@ -79,7 +140,7 @@ class TaskCenterFragment : Fragment() {
             i++
         }
         list_view.adapter = adapter
-        adapter!!.notifyDataSetChanged()
+        adapter!!.notifyDataSetChanged()*/
 
     }
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
