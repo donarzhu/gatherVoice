@@ -14,6 +14,8 @@ import kotlinx.android.synthetic.main.activity_record.*
 import com.aicyber.gathervoice.control.AudioRecordFunc
 import com.aicyber.gathervoice.control.AudioRecordFunc.AudioFileFunc
 import com.aicyber.gathervoice.control.AudioPlayFunc
+import com.aicyber.gathervoice.control.global
+import com.google.gson.Gson
 
 class Record : AppCompatActivity() {
     var itemInfo:ItemInfo?=null
@@ -32,6 +34,7 @@ class Record : AppCompatActivity() {
         taskName = intent.getStringExtra("taskName")
         uiHandler = UIHandler()
 
+        record_text.text = itemInfo!!.task_item_text
         task_name_title.text = taskName
         task_name.text = taskName
         id_total.text = itemsTotal.toString()
@@ -99,7 +102,7 @@ class Record : AppCompatActivity() {
         }
 
         final_record_button.setOnClickListener{
-            finish()
+            global.sendVoiceFile(uiHandler!!, itemInfo!!.id,AudioFileFunc.wavFilePath)
         }
 
         re_record_button.setOnClickListener{
@@ -122,7 +125,11 @@ class Record : AppCompatActivity() {
     private val CMD_RECORDFAIL = 2001
     private val CMD_STOP = 2002
 
-    internal inner class UIHandler : Handler()
+    private inner class ResultMessge{
+        var error:String = ""
+    }
+
+    private inner class UIHandler : Handler()
     {
         override fun handleMessage(msg: Message)
         {
@@ -131,6 +138,36 @@ class Record : AppCompatActivity() {
             super.handleMessage(msg)
             val b = msg.getData()
             val vCmd = b.getInt("cmd")
+            when(msg.what)
+            {
+                11->{
+                    try {
+                        var retData = msg.data.get("info").toString()
+                        if(global.sendFileHandler!=null) {
+                            var newMsg = Message()
+                            newMsg.data.putString("info",retData)
+                            newMsg.what = 11
+                            global.sendFileHandler!!.sendMessage(newMsg)
+                        }
+                        finish()
+                    }
+                    catch (e:Exception)
+                    {
+                        e.printStackTrace()
+                    }
+                }
+                12->
+                {
+                    var retData = msg.data.get("info").toString()
+                    val retMsg: ResultMessge? = Gson().fromJson(retData, ResultMessge::class.java)
+                    if(retMsg!=null)
+                    {
+                        Toast.makeText(this@Record,retMsg.error,Toast.LENGTH_SHORT)
+                    }
+
+                }
+
+            }
             when (vCmd)
             {
                 CMD_RECORDING_TIME -> {
@@ -157,7 +194,7 @@ class Record : AppCompatActivity() {
             }
         }
     }
-    internal inner class UIThread : Runnable {
+    private inner class UIThread : Runnable {
         var mTimeMill = 0
         var vRun = true
         fun stopThread() {

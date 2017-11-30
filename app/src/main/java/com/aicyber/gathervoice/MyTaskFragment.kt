@@ -1,5 +1,6 @@
 package com.aicyber.gathervoice
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -45,7 +46,8 @@ class MyTaskFragment : Fragment() {
     private var myTasks:Array<MyTaskInfo>?=null
     private var myVeritys:Array<MyVerityTask>?=null
 
-    var handler: Handler = object : Handler() {
+    var handler: Handler = @SuppressLint("HandlerLeak")
+    object : Handler() {
         override fun handleMessage(msg: Message?) {
             try {
                 when(msg!!.what)
@@ -131,8 +133,14 @@ class MyTaskFragment : Fragment() {
                 bundle.putParcelable("data",task)
                 when(listType)
                 {
-                    0->goToVoicePage(bundle)
-                    1->goToCheckPage(bundle)
+                    0->{
+                        bundle.putInt("id",myTasks!![i].id)
+                        goToVoicePage(bundle)
+                    }
+                    1->{
+                        bundle.putInt("id",myVeritys!![i].id)
+                        goToCheckPage(bundle)
+                    }
                 }
             }
                 this.isInit = true

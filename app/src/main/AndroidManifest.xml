@@ -37,7 +37,7 @@
         <activity android:name=".Page.voiceTaskListPage" />
         <activity android:name=".Page.checkTaskPage" />
         <activity android:name=".Page.Record" />
-        <activity android:name=".verifyItemPage"></activity>
+        <activity android:name=".Page.verifyItemPage"></activity>
     </application>
 
 </manifest>

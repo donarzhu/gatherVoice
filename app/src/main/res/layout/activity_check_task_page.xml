@@ -78,11 +78,12 @@
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/check_final_Button"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="0dp"
             android:elevation="@dimen/login_item_elevation"
             android:textSize="20sp"
             android:textColor="@color/white"
             android:text="结果上传"
+            android:visibility="invisible"
             />
     </LinearLayout>
 

@@ -105,13 +105,14 @@
                 android:text=")"
                 android:textSize="@dimen/recode_page_textsize"/>
         </LinearLayout>
+
         <TextView
+            android:id="@+id/record_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAlignment="center"
             android:text="语音内容"
-            android:textSize="@dimen/recode_page_textsize"
-            />
+            android:textAlignment="center"
+            android:textSize="@dimen/recode_page_textsize" />
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"

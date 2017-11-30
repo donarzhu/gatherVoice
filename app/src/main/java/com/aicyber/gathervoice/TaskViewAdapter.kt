@@ -57,8 +57,8 @@ public class TaskViewAdapter(context:Context,list:ArrayList<TaskInfo>) : BaseAda
                 if(!taskInfo.status.isEmpty())
                     view.task_status.text = taskInfo.status
                 when(listType ){
-                    VoiceTypeList->if(!taskInfo.reward.isEmpty()) view.task_price.text = taskInfo.reward
-                    CheckTypeList->if(!taskInfo.v_reward.isEmpty()) view.task_price.text = taskInfo.v_reward
+                    VoiceTypeList->if(!taskInfo.reward.isEmpty()) view.task_price.text = (taskInfo.reward.toFloat()*taskInfo.item_count).toString()
+                    CheckTypeList->if(!taskInfo.v_reward.isEmpty()) view.task_price.text = (taskInfo.v_reward.toFloat()*taskInfo.item_count).toString()
                 }
                 return view
             }
@@ -75,11 +75,11 @@ public class TaskViewAdapter(context:Context,list:ArrayList<TaskInfo>) : BaseAda
                 }
                 when(listType ){
                     VoiceTypeList-> {
-                        if (!taskInfo.reward.isEmpty()) view.my_task_price.text = taskInfo.reward
+                        if (!taskInfo.reward.isEmpty()) view.my_task_price.text = (taskInfo.reward.toFloat()*taskInfo.item_count).toString()
                         view.type_image.setImageResource(R.drawable.voice)
                     }
                     CheckTypeList-> {
-                        if (!taskInfo.v_reward.isEmpty()) view.my_task_price.text = taskInfo.v_reward
+                        if (!taskInfo.v_reward.isEmpty()) view.my_task_price.text =  (taskInfo.v_reward.toFloat()*taskInfo.item_count).toString()
                         view.type_image.setImageResource(R.drawable.check)
                     }
                 }

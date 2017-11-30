@@ -41,7 +41,7 @@
                 android:layout_width="100dp"
                 android:layout_height="25dp"
                 android:background="@android:color/holo_green_dark"
-                android:text="0.00‘"
+                android:text="未录制"
                 android:textColor="@color/white"
                 android:textAlignment="center"
                 android:layout_alignParentLeft="true"
@@ -53,9 +53,11 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:text="未通过"
+                android:text=""
                 android:layout_marginRight="10dp"
-                android:textColor="@color/holo_blue_bright" />
+                android:textColor="@color/holo_blue_bright"
+                android:visibility="visible"
+                />
         </RelativeLayout>
 
     </LinearLayout>

@@ -27,35 +27,41 @@ class MainActivity : AppCompatActivity(),TaskCenterFragment.OnFragmentInteractio
 {
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        try {
+            super.onCreate(savedInstanceState)
+            setContentView(R.layout.activity_main)
 
-        window.enterTransition = Fade().setDuration(2000)
-        window.exitTransition = Fade().setDuration(2000)
-        toolbar.title=""
+            window.enterTransition = Fade().setDuration(2000)
+            window.exitTransition = Fade().setDuration(2000)
+            toolbar.title = ""
 
-        var fragmentList = ArrayList<Fragment>()
-        var taskCenter = TaskCenterFragment()
-        var myTask = MyTaskFragment()
-        var personCenter = PersonCenterFragment();
-        fragmentList!!.add(taskCenter)
-        fragmentList!!.add(myTask)
-        fragmentList!!.add(personCenter)
+            var fragmentList = ArrayList<Fragment>()
+            var taskCenter = TaskCenterFragment()
+            var myTask = MyTaskFragment()
+            var personCenter = PersonCenterFragment()
+            fragmentList!!.add(taskCenter)
+            fragmentList!!.add(myTask)
+            fragmentList!!.add(personCenter)
 
-        main_viewpager!!.adapter = FrameFragmentPagerAdapter(this.supportFragmentManager,fragmentList)
-        main_viewpager!!.currentItem = 0
-        main_viewpager!!.setOnPageChangeListener(MainOnPageChangeListener())
-
-        taskCenterButton.setOnClickListener{
+            main_viewpager!!.adapter = FrameFragmentPagerAdapter(this.supportFragmentManager, fragmentList)
             main_viewpager!!.currentItem = 0
-        }
+            main_viewpager!!.setOnPageChangeListener(MainOnPageChangeListener())
 
-        myTaskButton.setOnClickListener{
-            main_viewpager!!.currentItem = 1
-        }
+            taskCenterButton.setOnClickListener {
+                main_viewpager!!.currentItem = 0
+            }
 
-        personButton.setOnClickListener{
-            main_viewpager!!.currentItem = 2
+            myTaskButton.setOnClickListener {
+                main_viewpager!!.currentItem = 1
+            }
+
+            personButton.setOnClickListener {
+                main_viewpager!!.currentItem = 2
+            }
+        }
+        catch (e:Exception)
+        {
+            println(e.message)
         }
     }
 

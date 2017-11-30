@@ -1,5 +1,6 @@
 package com.aicyber.gathervoice
 
+import android.annotation.SuppressLint
 import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
@@ -13,10 +14,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
-import android.widget.ListView
-import android.widget.TabHost
-import android.widget.Toast
-import com.aicyber.gathervoice.Page.RegisterPhone
+import com.aicyber.gathervoice.Page.TaskInfoPage
 import com.aicyber.gathervoice.control.global
 import com.aicyber.gathervoice.data.TaskInfo
 import com.aicyber.gathervoice.data.VerifyTask
@@ -58,7 +56,8 @@ class TaskCenterFragment : Fragment() {
 
     private var mListener: OnFragmentInteractionListener? = null
     var verifyTasks:Array<VerifyTask>?=null
-    var handler: Handler = object : Handler() {
+    private var handler: Handler = @SuppressLint("HandlerLeak")
+    object : Handler() {
         override fun handleMessage(msg: Message?) {
             try {
                 when(msg!!.what)
@@ -163,7 +162,13 @@ class TaskCenterFragment : Fragment() {
                 var task:TaskInfo = (view1.tag as TaskInfo?)!!
                 val bundle = Bundle()
                 bundle.putParcelable("data",task)
-                val intent = Intent(view!!.context, com.aicyber.gathervoice.Page.TaskInfoPage::class.java)
+                bundle.putInt("type",adapter!!.listType)
+                val intent = Intent(view!!.context, TaskInfoPage::class.java)
+                if(adapter!!.listType == 1)
+                {
+                    var verifyInfo = verifyTasks!![i]
+                    bundle.putInt("verify_id",verifyInfo.id)
+                }
                 intent.putExtras(bundle)
                 startActivity(intent)
                 }
@@ -219,6 +224,10 @@ class TaskCenterFragment : Fragment() {
         mListener = null
     }
 
+    override fun onDestroy() {
+        handler.removeCallbacksAndMessages(null)
+        super.onDestroy()
+    }
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated

@@ -54,8 +54,13 @@ class VerifyItemAdapter(context: Context, list:ArrayList<VerifyItemInfo>) : Base
             view.item_context.text = itemInfo.todo_item.task_item_text
         if(!itemInfo.todo_item.sound_len.isNullOrEmpty())
             view.voice_len.text = itemInfo.todo_item.sound_len
-        if(!itemInfo.result.isNullOrEmpty())
-            view.check_status.text = itemInfo.result
+        if(!itemInfo.result.isNullOrEmpty()) {
+            when(itemInfo.result)
+            {
+                "pass"-> view.check_status.text ="通过"
+                "fail"-> view.check_status.text ="错误"
+            }
+        }
         return view
     }
 
