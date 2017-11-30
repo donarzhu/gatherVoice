@@ -18,6 +18,7 @@ class global {
         var username:String = ""
         var id:Int = 0
         var sendFileHandler:Handler?=null
+        var sendDataHandler:Handler?=null
         private fun cmdVerifyCode_post():String = serverUri + "/api/user/sms/verify-code/"
         private fun cmdRegister_post():String = serverUri + "/api/user/register/"
         private fun cmdLogin_post():String = serverUri + "/api/user/login/"
@@ -31,6 +32,8 @@ class global {
         private fun cmdToduVerityTask_get(task_id: Int)= serverUri+ "/api/task/_app/todo/"+task_id.toString()+"/verify/"
         private fun cmdVerifyItems_get(task_id:Int) = serverUri +"/api/task/_app/my-verify/"+task_id.toString()+"/item/"
         private fun cmdVerifyItem_patch():String= serverUri+"/api/task/_app/my-verify-item/"
+        private fun cmdUpdateUserInfo_patch():String= serverUri+"/api/user/info/"
+        private fun cmdGetUserInfo_get():String = serverUri + "/api/user/info/"
 
         fun verifyCode(handler: Handler,phone:String) {
             var thread = thread {
@@ -316,6 +319,49 @@ class global {
             }
             thread.start()
         }
+
+        fun updateUserInfo(handler: Handler,sex: String,age:Int,place:String?) {
+            var thread = thread {
+                kotlin.run {
+                    var uri = cmdUpdateUserInfo_patch()
+                    var para:JSONObject = JSONObject().put("sex",sex)
+                    para.put("age",age)
+                    para.put("place",place)
+                    var ret = httpControlFunc.instance.patch(uri,para, token)
+                    if(!ret.isNullOrEmpty())
+                    {
+                        var msg = Message()
+                        msg.data.putString("info",ret)
+                        if(httpControlFunc.isSucceed)
+                            msg.what=23
+                        else
+                            msg.what=24
+                        handler.sendMessage(msg)
+                    }
+                }
+            }
+            thread.start()
+        }
+
+        fun getUserInfo(handler: Handler)
+        {
+            val thread = Thread{
+                kotlin.run {
+                    val uri = cmdGetUserInfo_get()
+                    var ret = httpControlFunc.instance.get(uri, token)
+                    var msg = Message()
+                    if (!ret.isNullOrEmpty()) {
+                        msg.data.putString("info", ret)
+                        if (httpControlFunc.isSucceed) {
+                            msg.what = 25
+                            handler.sendMessage(msg)
+                        }
+                    }
+                }
+            }
+            thread.start()
+        }
+
  ////////////////////end
     }
 

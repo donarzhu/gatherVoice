@@ -1,5 +1,6 @@
 package com.aicyber.gathervoice.Page
 
+import android.annotation.SuppressLint
 import android.app.ActivityOptions
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
@@ -17,11 +18,8 @@ class RegisterPhone : AppCompatActivity() {
     {
         var message:String = ""
     }
-    private inner class RetultError
-    {
-        var error:String = ""
-    }
-    var handler: Handler = object : Handler(){
+    var handler: Handler = @SuppressLint("HandlerLeak")
+    object : Handler(){
         override fun handleMessage(msg: Message?) {
             try {
                 super.handleMessage(msg)
@@ -37,17 +35,6 @@ class RegisterPhone : AppCompatActivity() {
                     1->{
                         getCode.text.clear()
                         getCode.text.append("000000")
-                    }
-                    3->
-                    {
-                        Toast.makeText(this@RegisterPhone,"注册成功，请返回登录！", Toast.LENGTH_SHORT).show()
-                    }
-                    4->
-                    {
-                        var retData = msg.data.get("info").toString()
-                        val retMsg:RetultError? = Gson().fromJson(retData,RetultError::class.java)
-                        if(retMsg!=null)
-                            Toast.makeText(this@RegisterPhone,retMsg.error, Toast.LENGTH_SHORT).show()
                     }
                 }
 
@@ -108,11 +95,19 @@ class RegisterPhone : AppCompatActivity() {
                 Toast.makeText(this@RegisterPhone,"两次密码输入不一致", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            global.register(handler,phone,pwd,vCode)
-            /*
-            startActivity(Intent(this,RegisterFinish::class.java),
+            //global.register(handler,phone,pwd,vCode)
+            var intent = Intent(this,RegisterFinish::class.java)
+            intent.putExtra("user",phone)
+            intent.putExtra("password",pwd)
+            intent.putExtra("code",vCode)
+            startActivity(intent,
                     ActivityOptions.makeSceneTransitionAnimation(this, nextButton, "regPage")
-                            .toBundle())*/
+                            .toBundle())
         }
+    }
+
+    override fun onDestroy() {
+        handler.removeCallbacksAndMessages(null)
+        super.onDestroy()
     }
 }
