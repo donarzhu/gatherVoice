@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.aicyber.gathervoice.Page.verifyItemPage">
+    tools:context="com.aicyber.gathervoice.page.verifyItemPage">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -106,6 +106,7 @@
                 android:textSize="@dimen/recode_page_textsize"/>
         </LinearLayout>
         <TextView
+            android:id="@+id/voice_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"

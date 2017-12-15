@@ -7,14 +7,14 @@ import org.json.JSONException
 import java.io.*
 import okhttp3.OkHttpClient
 import okhttp3.RequestBody
-import org.apache.http.client.ClientProtocolException
-import org.apache.http.client.methods.HttpGet
+//import org.apache.http.client.ClientProtocolException
+//import org.apache.http.client.methods.HttpGet
 
-import org.apache.http.client.methods.HttpPost
-import org.apache.http.entity.StringEntity
-import org.apache.http.impl.client.DefaultHttpClient
-import org.apache.http.protocol.HTTP
-import org.apache.http.util.EntityUtils
+//import org.apache.http.client.methods.HttpPost
+//import org.apache.http.entity.StringEntity
+//import org.apache.http.impl.client.DefaultHttpClient
+//import org.apache.http.protocol.HTTP
+//import org.apache.http.util.EntityUtils
 
 @Suppress("DEPRECATION")
 /**
@@ -83,7 +83,7 @@ class httpControlFunc private constructor(){
         }
         return result
     }
-
+/*
     fun excPost(url:String,para:JSONObject,tokenCode: String?):String
     {
         isSucceed = false
@@ -119,7 +119,7 @@ class httpControlFunc private constructor(){
         }
         return result;
     }
-
+*/
     fun get(url: String,tokenCode: String?):String?
     {
         isSucceed = false
@@ -144,7 +144,7 @@ class httpControlFunc private constructor(){
         }
         return ret
     }
-
+/*
     fun getResultForHttpGet(url: String,tokenCode: String?):String? {
         try {
             isSucceed = false
@@ -167,7 +167,7 @@ class httpControlFunc private constructor(){
         }
         return null
     }
-
+*/
     val TAG = "UploadHelper"
 
     fun uploadfile(url: String, item_id: Int, file: File,tokenCode: String?): String? {

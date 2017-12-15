@@ -1,4 +1,4 @@
-package com.aicyber.gathervoice.Page
+package com.aicyber.gathervoice.page
 
 /**
  * Created by donar on 2017/11/20.

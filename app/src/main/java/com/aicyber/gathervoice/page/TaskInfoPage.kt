@@ -1,15 +1,11 @@
-package com.aicyber.gathervoice.Page
+package com.aicyber.gathervoice.page
 
 import android.annotation.SuppressLint
-import android.app.Activity
-import android.app.ActivityOptions
-import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
 import android.widget.Toast
-import com.aicyber.gathervoice.MainActivity
 import com.aicyber.gathervoice.R
 import com.aicyber.gathervoice.control.global
 import com.aicyber.gathervoice.data.TaskInfo

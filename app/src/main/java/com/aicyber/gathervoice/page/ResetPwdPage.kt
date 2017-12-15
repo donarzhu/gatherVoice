@@ -1,7 +1,5 @@
-package com.aicyber.gathervoice.Page
+package com.aicyber.gathervoice.page
 
-import android.app.ActivityOptions
-import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.aicyber.gathervoice.R

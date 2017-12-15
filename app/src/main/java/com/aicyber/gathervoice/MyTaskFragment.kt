@@ -13,8 +13,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
-import com.aicyber.gathervoice.Page.checkTaskPage
-import com.aicyber.gathervoice.Page.voiceTaskListPage
+import com.aicyber.gathervoice.page.checkTaskPage
+import com.aicyber.gathervoice.page.voiceTaskListPage
 import com.aicyber.gathervoice.control.global
 import com.aicyber.gathervoice.data.MyTaskInfo
 import com.aicyber.gathervoice.data.MyVerityTask

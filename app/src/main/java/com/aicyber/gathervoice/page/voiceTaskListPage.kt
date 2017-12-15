@@ -1,4 +1,4 @@
-package com.aicyber.gathervoice.Page
+package com.aicyber.gathervoice.page
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -33,6 +33,7 @@ class voiceTaskListPage : AppCompatActivity() {
                                 if(my!!.currentView!=null)
                                 {
                                     my!!.currentView!!.voice_len.text = retMsg.sound_len
+                                    my!!.currentView!!.tag = retMsg
                                 }
                             }
                         }

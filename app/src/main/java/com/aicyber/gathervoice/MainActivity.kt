@@ -34,6 +34,8 @@ class MainActivity : AppCompatActivity(),TaskCenterFragment.OnFragmentInteractio
             window.enterTransition = Fade().setDuration(2000)
             window.exitTransition = Fade().setDuration(2000)
             toolbar.title = ""
+            startService(Intent(this,MessageService::class.java))
+
 
             var fragmentList = ArrayList<Fragment>()
             var taskCenter = TaskCenterFragment()

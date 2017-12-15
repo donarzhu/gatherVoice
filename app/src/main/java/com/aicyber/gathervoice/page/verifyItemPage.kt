@@ -1,4 +1,4 @@
-package com.aicyber.gathervoice.Page
+package com.aicyber.gathervoice.page
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -62,6 +62,7 @@ class verifyItemPage : AppCompatActivity() {
             pos = intent.getIntExtra("pos",0)
             taskName = intent.getStringExtra("taskName")
 
+            voice_text.text = itemInfo!!.todo_item.task_item_text
             task_name_title.text = taskName
             task_name.text = taskName
             id_total.text = itemsTotal.toString()

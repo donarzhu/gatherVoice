@@ -1,4 +1,4 @@
-package com.aicyber.gathervoice.Page
+package com.aicyber.gathervoice.page
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle

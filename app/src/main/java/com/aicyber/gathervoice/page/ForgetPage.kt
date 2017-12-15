@@ -1,4 +1,4 @@
-package com.aicyber.gathervoice.Page
+package com.aicyber.gathervoice.page
 
 import android.app.ActivityOptions
 import android.content.Intent

@@ -34,9 +34,10 @@ class global {
         private fun cmdVerifyItem_patch():String= serverUri+"/api/task/_app/my-verify-item/"
         private fun cmdUpdateUserInfo_patch():String= serverUri+"/api/user/info/"
         private fun cmdGetUserInfo_get():String = serverUri + "/api/user/info/"
+        private fun cmdMessage_get():String = serverUri +"/api/user/note/"
 
         fun verifyCode(handler: Handler,phone:String) {
-            var thread = thread {
+           thread { //t大小写代表不同的运行方式
                 kotlin.run {
                     var uri = cmdVerifyCode_post()
                     var para:JSONObject = JSONObject().put("tel",phone)
@@ -53,12 +54,11 @@ class global {
                     }
                 }
             }
-            thread.start()
         }
 
         fun register(handler: Handler,phone:String,password:String,code:String)
         {
-            var theard = Thread{
+            thread{
                 kotlin.run {
                     val uri = cmdRegister_post()
                     var para:JSONObject = JSONObject().put("password",password)
@@ -81,11 +81,10 @@ class global {
                     }
                 }
             }
-            theard.start()
         }
         fun login(handler: Handler,phone:String,password:String)
         {
-            var theard = Thread{
+            thread{
                 kotlin.run {
                     val uri = cmdLogin_post()
                     var para:JSONObject = JSONObject().put("password",password)
@@ -111,12 +110,11 @@ class global {
                     handler.sendMessage(msg)
                 }
             }
-            theard.start()
         }
 
         fun getVoiceTaskList(handler: Handler)
         {
-            val thread = Thread{
+            thread{
                 kotlin.run {
                     val uri = cmdVoiceTaskList_get()
                     var ret = httpControlFunc.instance.get(uri, token)
@@ -130,12 +128,11 @@ class global {
                     }
                 }
             }
-            thread.start()
         }
 
         fun getVerifyTaskList(handler: Handler)
         {
-            val thread = Thread{
+            thread{
                 kotlin.run {
                     val uri = cmdVerifyTaskList_get()
                     var ret = httpControlFunc.instance.get(uri, token)
@@ -149,12 +146,11 @@ class global {
                     }
                 }
             }
-            thread.start()
         }
 
         fun getMyTaskList(handler: Handler)
         {
-            val thread = Thread{
+            thread{
                 kotlin.run {
                     val uri = cmdMyTaskList_get()
                     var ret = httpControlFunc.instance.get(uri, token)
@@ -168,12 +164,11 @@ class global {
                     }
                 }
             }
-            thread.start()
         }
 
         fun getMyVerifyList(handler: Handler)
         {
-            val thread = Thread{
+            thread{
                 kotlin.run {
                     val uri = cmdMyVerifyList_get()
                     var ret = httpControlFunc.instance.get(uri, token)
@@ -187,11 +182,10 @@ class global {
                     }
                 }
             }
-            thread.start()
         }
         fun sendVoiceFile(handler: Handler,item_id:Int,file:String)
         {
-            val thread = Thread{
+            thread{
                 kotlin.run {
                     val uri = cmdSenVoiceItem_post()
                     val _file = File(file)
@@ -212,11 +206,10 @@ class global {
                     }
                 }
             }
-            thread.start()
         }
         fun getVoiceTaskItems(handler: Handler,item_id:Int)
         {
-            val thread = Thread{
+            thread{
                 kotlin.run {
                     val uri = cmdVoiceTaskItems_get(item_id)
                     var ret = httpControlFunc.instance.get(uri, token)
@@ -230,11 +223,10 @@ class global {
                     }
                 }
             }
-            thread.start()
         }
         fun todoVoiceTask(handler: Handler,task_id: Int)
         {
-            val thread = Thread{
+            thread{
                 kotlin.run {
                     val uri = cmdTodoVoiceTask_get(task_id)
                     var ret = httpControlFunc.instance.get(uri, token)
@@ -252,12 +244,11 @@ class global {
                     }
                 }
             }
-            thread.start()
         }
 
         fun todoVerityTask(handler: Handler,task_id: Int)
         {
-            val thread = Thread{
+            thread{
                 kotlin.run {
                     val uri = cmdToduVerityTask_get(task_id)
                     var ret = httpControlFunc.instance.get(uri, token)
@@ -275,12 +266,11 @@ class global {
                     }
                 }
             }
-            thread.start()
         }
 
         fun getVerifyItems(handler: Handler,task_id:Int)
         {
-            val thread = Thread{
+            thread{
                 kotlin.run {
                     val uri = cmdVerifyItems_get(task_id)
                     var ret = httpControlFunc.instance.get(uri, token)
@@ -294,11 +284,10 @@ class global {
                     }
                 }
             }
-            thread.start()
         }
 
         fun verifyItem(handler: Handler,item_id: Int,result:String,review:String?) {
-            var thread = thread {
+            thread{
                 kotlin.run {
                     var uri = cmdVerifyItem_patch()
                     var para:JSONObject = JSONObject().put("item_id",item_id)
@@ -317,11 +306,10 @@ class global {
                     }
                 }
             }
-            thread.start()
         }
 
         fun updateUserInfo(handler: Handler,sex: String,age:Int,place:String?) {
-            var thread = thread {
+            thread{
                 kotlin.run {
                     var uri = cmdUpdateUserInfo_patch()
                     var para:JSONObject = JSONObject().put("sex",sex)
@@ -340,12 +328,11 @@ class global {
                     }
                 }
             }
-            thread.start()
         }
 
         fun getUserInfo(handler: Handler)
         {
-            val thread = Thread{
+            thread{
                 kotlin.run {
                     val uri = cmdGetUserInfo_get()
                     var ret = httpControlFunc.instance.get(uri, token)
@@ -359,9 +346,25 @@ class global {
                     }
                 }
             }
-            thread.start()
         }
 
+        fun getMessages(handler: Handler)
+        {
+            thread{
+                kotlin.run {
+                    val uri = cmdMessage_get()
+                    var ret = httpControlFunc.instance.get(uri, token)
+                    var msg = Message()
+                    if (!ret.isNullOrEmpty()) {
+                        msg.data.putString("info", ret)
+                        if (httpControlFunc.isSucceed) {
+                            msg.what = 27
+                            handler.sendMessage(msg)
+                        }
+                    }
+                }
+            }
+        }
  ////////////////////end
     }
 

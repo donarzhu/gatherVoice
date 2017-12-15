@@ -6,7 +6,8 @@
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -15,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Page.Login"
+            android:name=".page.Login"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,19 +27,63 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Page.RegisterPhone"
+            android:name=".page.RegisterPhone"
             android:screenOrientation="portrait" />
-        <activity android:name=".Page.RegisterFinish" />
-        <activity android:name=".Page.ForgetPage" />
-        <activity android:name=".Page.ResetPwdPage" />
-        <activity android:name=".Page.TaskInfoPage" />
-        <activity android:name=".Page.voiceTaskListPage" />
-        <activity android:name=".Page.checkTaskPage" />
-        <activity android:name=".Page.Record" />
-        <activity android:name=".Page.verifyItemPage" />
-        <activity android:name=".Page.ChangeUserInfoPage"></activity>
+        <activity
+            android:name=".page.RegisterFinish"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".page.ForgetPage"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".page.ResetPwdPage"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".page.TaskInfoPage"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".page.voiceTaskListPage"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".page.checkTaskPage"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".page.Record"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".page.verifyItemPage"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".page.ChangeUserInfoPage"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".page.MessagePage"
+            android:screenOrientation="portrait" />
+
+        <service
+            android:name=".MessageService"
+            android:enabled="true"
+            android:exported="true" >
+            <intent-filter >
+                <action android:name=".MessageService" />
+
+                <category android:name="android.intent.category.default" />
+            </intent-filter>
+        </service>
+
+        <receiver
+            android:name=".BootReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter >
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

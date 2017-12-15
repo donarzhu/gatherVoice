@@ -1,4 +1,4 @@
-package com.aicyber.gathervoice.Page
+package com.aicyber.gathervoice.page
 
 import android.annotation.SuppressLint
 import android.app.ActivityOptions
@@ -73,7 +73,13 @@ class RegisterPhone : AppCompatActivity() {
             }
             if(error)
                 return@setOnClickListener
-            global.verifyCode(handler,inputName.text.toString())
+            try {
+                global.verifyCode(handler, inputName.text.toString())
+            }
+            catch (e:Exception)
+            {
+                e.printStackTrace()
+            }
         }
         nextButton.setOnClickListener{
             if(inputName.length() != 11) {

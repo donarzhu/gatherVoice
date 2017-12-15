@@ -1,4 +1,4 @@
-package com.aicyber.gathervoice.Page
+package com.aicyber.gathervoice.page
 
 import android.annotation.SuppressLint
 import android.support.v7.app.AppCompatActivity

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.aicyber.gathervoice.Page.Record">
+    tools:context="com.aicyber.gathervoice.page.Record">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -169,6 +169,7 @@
                         android:textSize="@dimen/recode_page_textsize"
                         />
                     <TextView
+                        android:id="@+id/hint_text"
                         android:layout_marginTop="5dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

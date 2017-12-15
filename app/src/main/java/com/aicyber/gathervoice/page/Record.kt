@@ -1,4 +1,4 @@
-package com.aicyber.gathervoice.Page
+package com.aicyber.gathervoice.page
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -17,6 +17,7 @@ import com.aicyber.gathervoice.control.AudioPlayFunc
 import com.aicyber.gathervoice.control.global
 import com.google.gson.Gson
 
+@Suppress("DEPRECATION")
 class Record : AppCompatActivity() {
     var itemInfo:ItemInfo?=null
     var itemsTotal:Int = 0
@@ -24,7 +25,8 @@ class Record : AppCompatActivity() {
     var taskName = ""
     private var uiHandler: UIHandler? = null
     private var uiThread: UIThread? = null
-    var isSuccedStop = true
+    private var isSuccedStop = true
+    private var isViewMode = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_record)
@@ -39,7 +41,25 @@ class Record : AppCompatActivity() {
         task_name.text = taskName
         id_total.text = itemsTotal.toString()
         id_pos.text = (pos+1).toString()
-        record_button.setOnClickListener {  }
+
+        if(!itemInfo!!.sound_len.isNullOrEmpty())
+        {
+            isViewMode = true
+            voice_len.text = itemInfo!!.sound_len
+            voice_len.setOnClickListener{
+                try {
+                    hint_text.text = "播放远程音频,需下载,请稍后"
+                    hint_text.setTextColor(resources.getColor(R.color.red))
+                    AudioPlayFunc.instance.playAudio(this, itemInfo!!.file_url)
+                }
+                catch (e:Exception)
+                {
+                    e.printStackTrace()
+                }
+            }
+            layout_record.visibility = View.INVISIBLE
+            finish_layout.visibility = View.VISIBLE
+        }
         record_button.setOnTouchListener { view, motionEvent ->
             //按下操作
             if (motionEvent.action == MotionEvent.ACTION_DOWN) {
@@ -98,14 +118,22 @@ class Record : AppCompatActivity() {
             if (motionEvent.action == MotionEvent.ACTION_MOVE) {
 
             }
-            false
+            true
         }
 
         final_record_button.setOnClickListener{
+            if(isViewMode)
+            {
+                finish()
+                return@setOnClickListener
+            }
             global.sendVoiceFile(uiHandler!!, itemInfo!!.id,AudioFileFunc.wavFilePath)
         }
 
         re_record_button.setOnClickListener{
+            isViewMode = false
+            hint_text.text = "点击绿色区域播放录音"
+            hint_text.setTextColor(resources.getColor(R.color.gray))
             layout_record.visibility = View.VISIBLE
             finish_layout.visibility = View.INVISIBLE
 

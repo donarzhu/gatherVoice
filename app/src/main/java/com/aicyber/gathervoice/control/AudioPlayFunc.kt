@@ -52,7 +52,7 @@ class AudioPlayFunc private constructor(){
             mediaPlayer = MediaPlayer.create(context, Uri.parse(mUri))
             mediaPlayer!!.start()
             mediaPlayer!!.setOnCompletionListener {
-                //Toast.makeText(context,"播放完毕", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context,"播放完毕", Toast.LENGTH_SHORT).show()
                 mediaPlayer!!.stop()
                 mediaPlayer!!.release()
                 mediaPlayer = null

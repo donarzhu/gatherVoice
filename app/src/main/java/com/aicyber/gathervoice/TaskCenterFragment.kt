@@ -1,7 +1,6 @@
 package com.aicyber.gathervoice
 
 import android.annotation.SuppressLint
-import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -14,14 +13,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
-import com.aicyber.gathervoice.Page.TaskInfoPage
+import com.aicyber.gathervoice.page.TaskInfoPage
 import com.aicyber.gathervoice.control.global
 import com.aicyber.gathervoice.data.TaskInfo
 import com.aicyber.gathervoice.data.VerifyTask
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_task_center.*
-import kotlinx.android.synthetic.main.task_card.*
-import kotlinx.android.synthetic.main.task_card.view.*
 
 
 @Suppress("DEPRECATION")

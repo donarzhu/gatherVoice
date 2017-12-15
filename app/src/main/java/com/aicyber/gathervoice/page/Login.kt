@@ -1,4 +1,4 @@
-package com.aicyber.gathervoice.Page
+package com.aicyber.gathervoice.page
 
 import android.Manifest.permission.*
 import android.annotation.SuppressLint
@@ -10,7 +10,6 @@ import android.content.pm.PackageManager
 import android.graphics.Paint
 import android.media.AudioFormat
 import android.os.Bundle
-import android.support.v4.content.PermissionChecker
 import android.support.v7.app.AppCompatActivity
 import com.aicyber.gathervoice.R
 import kotlinx.android.synthetic.main.activity_login.*
@@ -20,23 +19,39 @@ import android.os.Build
 import android.support.annotation.RequiresApi
 import android.widget.Toast
 import android.content.DialogInterface
+import android.content.SharedPreferences
 import android.os.Handler
 import android.os.Message
+import android.support.v4.app.NotificationManagerCompat
 import com.aicyber.gathervoice.MainActivity
+import com.aicyber.gathervoice.MessageService
 import com.aicyber.gathervoice.control.global
+import com.google.gson.Gson
 
 
 class Login : AppCompatActivity() {
+    private inner class loginSave{
+        var username = ""
+        var password = ""
+    }
 
     var bCanRecord = false
     var bCanWrite = false
     var bNet = false
-    var handler: Handler = object : Handler() {
+    var handler: Handler = @SuppressLint("HandlerLeak")
+    object : Handler() {
         override fun handleMessage(msg: Message?) {
             try {
                 when(msg!!.what)
                 {
                     5->{
+                        var info = loginSave()
+                        info.username = inputName.text.toString()
+                        info.password = inputPwd.text.toString()
+                        var jsonString = Gson().toJson(info)
+                        editor!!.putString("data",jsonString)
+                        editor!!.commit()
+                        var data = pref!!.getString("data","")
                         startActivity(Intent(this@Login, MainActivity::class.java),ActivityOptions.makeSceneTransitionAnimation(this@Login).toBundle())
                         finish()
                     }
@@ -52,44 +67,59 @@ class Login : AppCompatActivity() {
             }
         }
     }
-
+    private var pref: SharedPreferences?  = null
+    private var editor:SharedPreferences.Editor? = null
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        try {
+        setContentView(R.layout.activity_login)
+        var version = android.os.Build.VERSION.RELEASE
 
+        try {
             //window.requestFeature(Window.FEATURE_CONTENT_TRANSITIONS)
             //window.exitTransition = Explode()
-            setContentView(R.layout.activity_login)
             buttonRegister.paint.flags= Paint.UNDERLINE_TEXT_FLAG
             buttonForget.paint.flags=Paint.UNDERLINE_TEXT_FLAG
-            if(checkSelfPermission(RECORD_AUDIO)!=PackageManager.PERMISSION_GRANTED)
+            if(NotificationManagerCompat.from(this).areNotificationsEnabled())
             {
-                val perms = arrayOf("android.permission.RECORD_AUDIO")
-                val permsRequestCode = 200
-                requestPermissions(perms, permsRequestCode)
+                //test
+                //MessageService.showStandardNotification(this,"欢迎使用数据采集app","测试用例")
             }
-            else
+
+            pref = getSharedPreferences("login",MODE_PRIVATE)
+            editor = pref!!.edit()
+            var data = pref!!.getString("data","")
+            if(!data.isNullOrEmpty())
             {
-                bCanRecord = true
-                if(checkSelfPermission(WRITE_EXTERNAL_STORAGE)!=PackageManager.PERMISSION_GRANTED)
+                var info = Gson().fromJson<loginSave>(data,loginSave::class.java)
+                if(info!=null)
                 {
-                    val perms = arrayOf("android.permission.WRITE_EXTERNAL_STORAGE")
-                    val permsRequestCode = 300
-                    requestPermissions(perms, permsRequestCode)
+                    inputName.text.clear()
+                    inputName.text.append(info.username)
+                    inputPwd.text.clear()
+                    inputPwd.text.append(info.password)
                 }
-                else
-                {
-                    bCanWrite = true
-                    if(checkSelfPermission(INTERNET)!=PackageManager.PERMISSION_GRANTED)
-                    {
-                        val perms = arrayOf("android.permission.INTERNET")
-                        val permsRequestCode = 400
+            }
+            if(version.substring(0,1).toFloat() >= 6) {
+                if (checkSelfPermission(RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
+                    val perms = arrayOf("android.permission.RECORD_AUDIO")
+                    val permsRequestCode = 200
+                    requestPermissions(perms, permsRequestCode)
+                } else {
+                    bCanRecord = true
+                    if (checkSelfPermission(WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                        val perms = arrayOf("android.permission.WRITE_EXTERNAL_STORAGE")
+                        val permsRequestCode = 300
                         requestPermissions(perms, permsRequestCode)
-                    }
-                    else
-                    {
-                        bNet = true
+                    } else {
+                        bCanWrite = true
+                        if (checkSelfPermission(INTERNET) != PackageManager.PERMISSION_GRANTED) {
+                            val perms = arrayOf("android.permission.INTERNET")
+                            val permsRequestCode = 400
+                            requestPermissions(perms, permsRequestCode)
+                        } else {
+                            bNet = true
+                        }
                     }
                 }
             }
@@ -98,24 +128,27 @@ class Login : AppCompatActivity() {
         catch (e:Exception)
         {
             //Toast.makeText(this@Login,e.message,Toast.LENGTH_SHORT).show()
+            e.printStackTrace()
         }
         loginButton.setOnClickListener{
-            if(!bCanRecord || !bCanWrite || !bNet)
-            {
-                AlertDialog.Builder(this@Login).setTitle("系统提示")//设置对话框标题
 
-                        .setMessage("请同意必要权限，否则无法继续程序，将退出程序！")//设置显示的内容
+            if(version.substring(0,1).toFloat() >= 7) {
+                if (!bCanRecord || !bCanWrite || !bNet) {
+                    AlertDialog.Builder(this@Login).setTitle("系统提示")//设置对话框标题
 
-                        .setPositiveButton("确定", DialogInterface.OnClickListener { dialog, which ->
+                            .setMessage("请同意必要权限，否则无法继续程序，将退出程序！")//设置显示的内容
 
-                            finish()
-                        }).show()//在按键响应事件中显示此对话框
-                return@setOnClickListener
+                            .setPositiveButton("确定", DialogInterface.OnClickListener { dialog, which ->
+
+                                finish()
+                            }).show()//在按键响应事件中显示此对话框
+                    return@setOnClickListener
+                }
             }
             var phoneNo = inputName.text.toString()
             var error = false;
             if(phoneNo.length != 11) {
-                inputNameWrapper.error = "手机号码输入错误";
+                inputNameWrapper.error = "手机号码输入错误"
                 error = true
             }
             var pwd = inputPwd.text.toString()
@@ -230,6 +263,11 @@ class Login : AppCompatActivity() {
 
             return true
         }
+    }
+
+    override fun onDestroy() {
+        handler.removeCallbacksAndMessages(null)
+        super.onDestroy()
     }
 
 }

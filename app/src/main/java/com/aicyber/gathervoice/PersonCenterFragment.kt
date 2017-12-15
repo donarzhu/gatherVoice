@@ -1,7 +1,6 @@
 package com.aicyber.gathervoice
 
 import android.annotation.SuppressLint
-import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -12,9 +11,9 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import com.aicyber.gathervoice.Page.ChangeUserInfoPage
+import com.aicyber.gathervoice.page.ChangeUserInfoPage
 import com.aicyber.gathervoice.control.global
+import com.aicyber.gathervoice.page.MessagePage
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_person_center.*
 
@@ -64,8 +63,6 @@ class PersonCenterFragment : Fragment() {
                     user_place.text = retMsg.place
                 user_credit.text = retMsg.credit.toString()
                 user_reward.text = retMsg.reward.toString()
-                if(!retMsg.tel.isNullOrEmpty())
-                    user_tel.text = retMsg.tel
             }
             catch (e:Exception)
             {
@@ -100,6 +97,10 @@ class PersonCenterFragment : Fragment() {
         update_info.setOnClickListener{
             var intent = Intent(view!!.context,ChangeUserInfoPage::class.java)
             global.sendDataHandler = handler
+            startActivity(intent)
+        }
+        message_list.setOnClickListener{
+            var intent = Intent(view!!.context,MessagePage::class.java)
             startActivity(intent)
         }
     }
