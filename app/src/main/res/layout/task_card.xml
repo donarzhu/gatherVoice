@@ -28,8 +28,8 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:elevation="10dp"
-            android:src="@drawable/icon_task"
-            android:tint="@color/colorPrimaryDark" />
+            android:src="@drawable/task_icon"
+            />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

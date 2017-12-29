@@ -11,9 +11,8 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.aicyber.gathervoice.page.ChangeUserInfoPage
 import com.aicyber.gathervoice.control.global
-import com.aicyber.gathervoice.page.MessagePage
+import com.aicyber.gathervoice.page.*
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_person_center.*
 
@@ -37,6 +36,19 @@ class PersonCenterFragment : Fragment() {
         var place:String? = null
         var credit=0
         var reward=0.0
+        var last_login:String?= null
+        var dialect:Array<Int>?=null
+        var format_dialect:Array<String>?=null
+        var fullname:String? = null
+        var id_no:String?=null // "120100199001011234",
+        var bank:String?= null // "农业银行",
+        var card_no:String?= null // "6200187201011234",
+        var ti_correct=0
+        var ti_all=0
+        var vi_correct=0
+        var vi_all = 0
+        var ti_crate=1
+        var vi_crate=1
         var wx_openId:String?= null
         var wx_nickName:String?= null
         var wx_avatarUrl:String? = null
@@ -55,14 +67,46 @@ class PersonCenterFragment : Fragment() {
                 val retMsg: ResultUserInfo = Gson().fromJson(retData, ResultUserInfo::class.java) ?: return
                 if(!retMsg.username.isNullOrEmpty())
                     user_name.text = retMsg.username
-                if(!retMsg.sex.isNullOrEmpty())
-                    user_sex.text = retMsg.sex
+                if(!retMsg.sex.isNullOrEmpty()) {
+                    when (retMsg.sex)
+                    {
+                        "1"->user_sex.text = "男"
+                        "2"->user_sex.text = "女"
+                    }
+                }
                 if(retMsg.age!=null)
                     user_age.text = retMsg.age.toString()
                 if(!retMsg.place.isNullOrEmpty())
                     user_place.text = retMsg.place
                 user_credit.text = retMsg.credit.toString()
-                user_reward.text = retMsg.reward.toString()
+                if(retMsg.dialect!=null && retMsg.dialect!!.size>0)
+                {
+                    var i:Int = 0
+                    var dialectString =""
+                    for(value in retMsg.dialect!!)
+                    {
+                        if(i==0)
+                            dialectString = global.getDialect(value)
+                        else
+                            dialectString += ","+global.getDialect(value)
+                        i++
+                    }
+                    user_place.text = dialectString
+                }
+
+                get_money.setOnClickListener{
+                    var intent = Intent(context,withdrawCashPage::class.java)
+                    intent.putExtra("cash",retMsg.reward)
+                    startActivity(intent)
+                }
+                binding_bank.setOnClickListener{
+                    var intent = Intent(context,BindingCardPage::class.java)
+                    startActivity(intent)
+                }
+                setup_user.setOnClickListener {
+                    var intent = Intent(context,SetupPage::class.java)
+                    startActivity(intent)
+                }
             }
             catch (e:Exception)
             {
@@ -94,11 +138,14 @@ class PersonCenterFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         title_back.background.alpha = 100
         global.getUserInfo(handler)
+        /*
         update_info.setOnClickListener{
             var intent = Intent(view!!.context,ChangeUserInfoPage::class.java)
             global.sendDataHandler = handler
             startActivity(intent)
         }
+        */
+
         message_list.setOnClickListener{
             var intent = Intent(view!!.context,MessagePage::class.java)
             startActivity(intent)

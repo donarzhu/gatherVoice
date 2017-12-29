@@ -118,7 +118,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="籍贯:"
+                        android:text="方言:"
                         android:textSize="@dimen/person_page_text_size"
                         />
                     <TextView
@@ -128,6 +128,15 @@
                         android:text=""
                         android:textSize="@dimen/person_page_text_size"
                         />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
+                    >
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="100dp"
@@ -151,6 +160,7 @@
                         android:text=""
                         />
                 </LinearLayout>
+
             </RelativeLayout>
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -182,6 +192,7 @@
             android:layout_marginTop="20dp"
             android:background="@color/monsoon" />
         <RelativeLayout
+            android:id="@+id/get_money"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
@@ -210,20 +221,11 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 >
-                <TextView
-                    android:id="@+id/user_reward"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/arrow"
                     android:layout_gravity="center_vertical"
-                    android:textSize="@dimen/person_page_text_size"
-                    android:text="130.00"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:textSize="@dimen/person_page_text_size"
-                    android:text="元"
                     />
             </LinearLayout>
         </RelativeLayout>
@@ -233,7 +235,7 @@
             android:layout_marginTop="0dp"
             android:background="@color/monsoon" />
         <RelativeLayout
-            android:id="@+id/update_info"
+            android:id="@+id/binding_bank"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
@@ -245,13 +247,13 @@
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/feedback"
+                    android:src="@drawable/bank"
                     />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/person_page_text_size"
-                    android:text="修改信息"
+                    android:text="绑定银行卡"
                     android:layout_marginLeft="5dp"
                     android:layout_gravity="center_vertical"
 
@@ -295,6 +297,50 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/person_page_text_size"
                     android:text="通知消息"
+                    android:layout_marginLeft="5dp"
+                    android:layout_gravity="center_vertical"
+
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                >
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/arrow"
+                    android:layout_gravity="center_vertical"
+                    />
+            </LinearLayout>
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="0dp"
+            android:background="@color/monsoon" />
+
+        <RelativeLayout
+            android:id="@+id/setup_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            >
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/setup"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/person_page_text_size"
+                    android:text="设置"
                     android:layout_marginLeft="5dp"
                     android:layout_gravity="center_vertical"
 

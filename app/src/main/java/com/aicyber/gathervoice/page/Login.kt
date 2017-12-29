@@ -171,9 +171,8 @@ class Login : AppCompatActivity() {
         }
 
         buttonForget.setOnClickListener{
-            startActivity(Intent(this,ForgetPage::class.java),
-                    ActivityOptions.makeSceneTransitionAnimation(this, loginView, "loginPage")
-                            .toBundle())
+            val intent = Intent(this,ResetPwdPage::class.java)
+            startActivity(intent)
         }
     }
 

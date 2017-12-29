@@ -58,15 +58,15 @@
             android:layout_weight="4"
             android:orientation="vertical"
             android:layout_marginTop="20dp"
+            android:layout_marginBottom="0dp"
             >
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="10dp"
+                android:layout_height="75dp"
                 android:layout_marginLeft="@dimen/login_activity_margin"
                 android:layout_marginRight="@dimen/login_activity_margin"
                 android:orientation="horizontal"
-                android:visibility="invisible"
                 >
 
                 <ImageView
@@ -75,6 +75,7 @@
                     android:src="@drawable/user"
                     android:layout_marginTop="@dimen/normal_icon_marginTop"
                     android:tint="@color/gray"
+                    android:layout_gravity="top"
                     />
 
                 <android.support.design.widget.TextInputLayout
@@ -82,15 +83,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:elevation="2dp"
-                    android:textColorHint="@color/gray">
+                    android:textColorHint="@color/my_hit_color">
 
                     <android.support.design.widget.TextInputEditText
                         android:id="@+id/inputUserName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="请输入用户名"
+                        android:hint="请输入姓名"
                         android:imeOptions="actionNext"
-                        android:inputType="phone"
                         android:textColor="@color/gray" />
                 </android.support.design.widget.TextInputLayout>
             </LinearLayout>
@@ -104,7 +104,7 @@
                     android:layout_width="@dimen/normal_icon_size"
                     android:layout_height="@dimen/normal_icon_size"
                     android:src="@drawable/sex"
-                    android:layout_marginTop="@dimen/normal_icon_marginTop"
+                    android:layout_marginTop="10dp"
                     android:tint="@color/gray"
                     />
                 <RelativeLayout
@@ -180,12 +180,12 @@
                         android:hint="请输入年龄"
                         android:imeOptions="actionNext"
                         android:inputType="number"
-                        android:textColor="@color/gray" />
+                        android:textColor="@color/my_hit_color" />
                 </android.support.design.widget.TextInputLayout>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="75dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/login_activity_margin"
                 android:layout_marginRight="@dimen/login_activity_margin"
                 android:orientation="horizontal"
@@ -194,27 +194,35 @@
                 <ImageView
                     android:layout_width="@dimen/normal_icon_size"
                     android:layout_height="@dimen/normal_icon_size"
-                    android:src="@drawable/native_place"
+                    android:src="@drawable/lag"
                     android:layout_marginTop="@dimen/normal_icon_marginTop"
                     android:tint="@color/gray"
                     />
-
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/inputPlaceWrapper"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:elevation="2dp"
-                    android:textColorHint="@color/gray">
-
-                    <android.support.design.widget.TextInputEditText
-                        android:id="@+id/inputPlace"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:orientation="vertical">
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="请输入籍贯"
-                        android:imeOptions="actionNext"
-                        android:inputType="textCapSentences"
-                        android:textColor="@color/gray" />
-                </android.support.design.widget.TextInputLayout>
+                        android:textColor="@color/my_hit_color"
+                        android:text="请选择方言（可多选）"
+                        android:textSize="18dp"
+                        />
+                    <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/lag_spinner"/>
+                    <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/lag_spinner2"
+                        android:layout_marginTop="5dp"
+                        />
+                </LinearLayout>
+
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -269,5 +277,6 @@
 
             </LinearLayout>
         </LinearLayout>
+
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

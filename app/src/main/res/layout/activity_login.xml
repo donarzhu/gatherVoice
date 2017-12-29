@@ -147,7 +147,6 @@
                     android:text="忘记密码"
                     android:textColor="@color/colorAccent"
                     android:textSize="14sp"
-                    android:visibility="invisible"
                     />
             </RelativeLayout>
             <LinearLayout

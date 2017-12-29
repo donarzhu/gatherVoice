@@ -6,7 +6,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:colorButtonNormal">@android:color/holo_blue_light</item>
+        <item name="android:colorButtonNormal">@color/my_button_color</item>
         <!-- 允许使用transitions -->
         <item name="android:windowContentTransitions">true</item>
     </style>

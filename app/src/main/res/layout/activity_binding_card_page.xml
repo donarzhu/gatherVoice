@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.aicyber.gathervoice.page.BindingCardPage">
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:elevation="@dimen/login_item_elevation"
+        tools:layout_editor_absoluteX="159dp"
+        tools:layout_editor_absoluteY="0dp"
+        tools:ignore="MissingConstraints">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/back_light"
+                android:transitionName="regPage"
+                android:id="@+id/backRegButton"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="绑定银行卡"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:textColor="@color/white"
+                android:textSize="20dp" />
+
+        </RelativeLayout>
+    </android.support.design.widget.AppBarLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp"
+        tools:ignore="MissingConstraints"
+        android:id="@+id/RegView"
+        android:background="@color/global_bg"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            >
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginLeft="@dimen/login_activity_margin"
+            android:layout_marginRight="@dimen/login_activity_margin"
+            android:background="@drawable/myrect"
+            android:elevation="10dp"
+            android:orientation="horizontal"
+            >
+
+            <ImageView
+                android:layout_width="@dimen/normal_icon_size"
+                android:layout_height="@dimen/normal_icon_size"
+                android:src="@drawable/password"
+                android:layout_marginTop="20dp"
+                android:tint="@color/gray"
+                />
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/inputPwdWrapper"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:passwordToggleEnabled="false"
+                android:elevation="2dp"
+                android:textColorHint="@color/gray"
+                >
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/inputPwd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:imeOptions="actionDone"
+                    android:textColor="@color/gray"
+                    android:hint="请输入密码" />
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginLeft="@dimen/login_activity_margin"
+            android:layout_marginRight="@dimen/login_activity_margin"
+            android:orientation="horizontal"
+            android:background="@drawable/myrect"
+            android:elevation="10dp"
+            android:layout_marginTop="20dp"
+        >
+
+            <ImageView
+                android:layout_width="@dimen/normal_icon_size"
+                android:layout_height="@dimen/normal_icon_size"
+                android:src="@drawable/id_number"
+                android:layout_marginTop="@dimen/normal_icon_marginTop"
+                android:layout_marginLeft="5dp"
+                />
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/inputIDWrapper"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:elevation="2dp"
+                android:textColorHint="@color/gray"
+                android:layout_marginLeft="5dp"
+                >
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/inputIDNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="身份证号"
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
+                    android:textColor="@color/my_hit_color" />
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/login_activity_margin"
+            android:layout_marginRight="@dimen/login_activity_margin"
+            android:orientation="horizontal"
+            android:background="@drawable/myrect"
+            android:elevation="10dp"
+            android:layout_marginTop="20dp"
+            >
+
+            <ImageView
+                android:layout_width="@dimen/normal_icon_size"
+                android:layout_height="@dimen/normal_icon_size"
+                android:src="@drawable/bank"
+                android:layout_marginTop="@dimen/normal_icon_marginTop"
+                android:layout_marginLeft="5dp"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/inputBankWrapper"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:elevation="2dp"
+                    android:textColorHint="@color/gray"
+                    android:layout_marginLeft="5dp"
+                    >
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/inputBankName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="银行名称"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:textColor="@color/my_hit_color" />
+                </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/inputCardWrapper"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:elevation="2dp"
+                    android:textColorHint="@color/gray"
+                    android:layout_marginLeft="5dp"
+                    >
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/inputCard"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="银行卡号"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:textColor="@color/my_hit_color" />
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/BindingButton"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:elevation="@dimen/login_item_elevation"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:text="绑定银行卡"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            />
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

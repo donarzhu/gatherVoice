@@ -12,6 +12,10 @@ public class TaskInfo() : Parcelable {
     public var name:String ="" // "task2",
     public var memo:String="" // "task2_memo",
     public var person:Int = 0
+    public var male:Int =0
+    public var female:Int =0
+    public var age_from:Int = 0
+    public var age_to:Int = 0
     public var place:String?=null
     public var item_count:Int= 0
     public var reward:String=""
@@ -19,6 +23,9 @@ public class TaskInfo() : Parcelable {
     public var rank:Int=0
     public var v_person:Int=0
     public var v_reward:String=""
+    public var dialect:Int = 0
+    public var format_dialect=""
+    public var format_process =""
     public var todo_total:Int=0        // 领取录音任务人数
     public var todo_finish:Int=0       // 录音任务完成人数
     public var verify_total:Int=0      // 领取录音任务的验证任务人数
@@ -32,6 +39,10 @@ public class TaskInfo() : Parcelable {
         name = parcel.readString()
         memo = parcel.readString()
         person = parcel.readInt()
+        male = parcel.readInt()
+        female = parcel.readInt()
+        age_from = parcel.readInt()
+        age_to = parcel.readInt()
         place = parcel.readString()
         item_count = parcel.readInt()
         reward = parcel.readString()
@@ -39,6 +50,9 @@ public class TaskInfo() : Parcelable {
         rank = parcel.readInt()
         v_person = parcel.readInt()
         v_reward = parcel.readString()
+        dialect = parcel.readInt()
+        format_dialect = parcel.readString()
+        format_process = parcel.readString()
         todo_total = parcel.readInt()
         todo_finish = parcel.readInt()
         verify_total = parcel.readInt()
@@ -53,6 +67,10 @@ public class TaskInfo() : Parcelable {
         parcel.writeString(name)
         parcel.writeString(memo)
         parcel.writeInt(person)
+        parcel.writeInt(male)
+        parcel.writeInt(female)
+        parcel.writeInt(age_from)
+        parcel.writeInt(age_to)
         parcel.writeString(place)
         parcel.writeInt(item_count)
         parcel.writeString(reward)
@@ -60,6 +78,9 @@ public class TaskInfo() : Parcelable {
         parcel.writeInt(rank)
         parcel.writeInt(v_person)
         parcel.writeString(v_reward)
+        parcel.writeInt(dialect)
+        parcel.writeString(format_dialect)
+        parcel.writeString(format_process)
         parcel.writeInt(todo_total)
         parcel.writeInt(todo_finish)
         parcel.writeInt(verify_total)

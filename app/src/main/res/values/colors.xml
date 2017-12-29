@@ -23,4 +23,6 @@
     <color name="toolbar_bg">#FAFBFD</color>
     <color name="blue">#0000FF</color>
     <color name="holo_blue_bright">#ff00ddff</color>
+    <color name="my_button_color">#85c3fe</color>
+    <color name="my_hit_color">#d7d7d7</color>
 </resources>

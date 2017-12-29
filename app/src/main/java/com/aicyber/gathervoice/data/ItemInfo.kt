@@ -13,5 +13,8 @@ public class ItemInfo: Serializable {
     public var file_url:String?=null
     public var sound_len:String?=null
     public var finish_at:String?=null
+    public var verify_pass:Int = 0
+    public var verify_fail:Int = 0
+    public var decision:Boolean? =null
 }
 

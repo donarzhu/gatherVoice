@@ -59,6 +59,11 @@ class TaskInfoPage : AppCompatActivity() {
                     0->if (!taskinfo!!.reward.isEmpty()) text_price.text = (taskinfo!!.reward.toFloat()*taskinfo.item_count).toString()
                     1->if(!taskinfo!!.v_reward.isNullOrEmpty()) text_price.text = (taskinfo!!.v_reward.toFloat()*taskinfo.item_count).toString()
                 }
+                if(taskinfo!!.dialect!=0) need_dialect.text = global.getDialect(taskinfo.dialect)
+                else need_dialect.text = "没有限制"
+                if(taskinfo!!.age_from!=null)age_from.text = taskinfo!!.age_from.toString()
+                if(taskinfo!!.age_to!=null)age_to.text = taskinfo!!.age_to.toString()
+
             }
             addTaskButton.setOnClickListener{
                 //setResult(Activity.RESULT_OK)

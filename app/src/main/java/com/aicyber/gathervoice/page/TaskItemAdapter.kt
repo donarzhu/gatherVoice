@@ -25,6 +25,15 @@ class TaskItemAdapter(context: Context, list:ArrayList<ItemInfo>) : BaseAdapter(
             view.item_context.text = itemInfo.task_item_text
         if(!itemInfo.sound_len.isNullOrEmpty())
             view.voice_len.text = itemInfo.sound_len
+        if(itemInfo.decision != null)
+        {
+            if(itemInfo.decision!!)
+                view.check_status.text = "通过"
+            else
+                view.check_status.text = "未通过"
+        }
+        else
+            view.check_status.text = "未审核"
         return view
     }
 
