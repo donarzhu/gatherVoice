@@ -62,7 +62,8 @@ class PersonCenterFragment : Fragment() {
     var handler: Handler = @SuppressLint("HandlerLeak")
     object : Handler() {
         override fun handleMessage(msg: Message?) {
-            try {
+            try
+            {
                 var retData = msg!!.data.get("info").toString()
                 val retMsg: ResultUserInfo = Gson().fromJson(retData, ResultUserInfo::class.java) ?: return
                 if(!retMsg.username.isNullOrEmpty())
@@ -107,6 +108,7 @@ class PersonCenterFragment : Fragment() {
                     var intent = Intent(context,SetupPage::class.java)
                     startActivity(intent)
                 }
+
             }
             catch (e:Exception)
             {
