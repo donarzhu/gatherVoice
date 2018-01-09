@@ -51,5 +51,8 @@ class BindingCardPage : AppCompatActivity() {
             }
             global.bindingHankCard(handler,pwd,id_no,bank,card)
         }
+        backButton.setOnClickListener{
+            finish()
+        }
     }
 }

@@ -22,7 +22,7 @@
                 android:layout_centerVertical="true"
                 android:src="@drawable/back_light"
                 android:transitionName="regPage"
-                android:id="@+id/backRegButton"
+                android:id="@+id/backButton"
                 />
 
             <TextView
