@@ -77,15 +77,15 @@ class MainActivity : AppCompatActivity(),TaskCenterFragment.OnFragmentInteractio
     @SuppressLint("ResourceAsColor")
     fun SetNormalColor(image: ImageView?, text: TextView?)
     {
-        image!!.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(this,R.color.gray))
-        text!!.setTextColor(resources.getColor(R.color.gray))
+        image!!.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(this,R.color.main_button_noselect))
+        text!!.setTextColor(resources.getColor(R.color.main_button_noselect))
     }
 
     @SuppressLint("ResourceAsColor")
     fun SetSelectColor(image: ImageView?, text: TextView?)
     {
-        image!!.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(this,R.color.holo_blue_bright))
-        text!!.setTextColor(resources.getColor(R.color.holo_blue_bright))
+        image!!.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(this,R.color.main_button_selected))
+        text!!.setTextColor(resources.getColor(R.color.main_button_selected))
     }
 
     override fun onFragmentInteraction(uri: Uri) {

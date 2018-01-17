@@ -70,7 +70,8 @@ class Record : AppCompatActivity() {
                     if(mResult == AudioRecordFunc.ErrorCode.SUCCESS) {
                         //uiThread =  UIThread()
                         //Thread(uiThread).start()
-                        Toast.makeText(this@Record,"正在录音中...",Toast.LENGTH_SHORT).show()
+                        global.SysVersion.substring(0,1).toFloat() >= 6
+                            Toast.makeText(this@Record,"正在录音中...",Toast.LENGTH_SHORT).show()
                     }
                     else
                     {

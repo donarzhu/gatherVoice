@@ -58,9 +58,15 @@
 
         <LinearLayout
             android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_weight="0"
-            android:background="@color/black"
+            android:background="@color/white"
             android:elevation="8dp"
             android:orientation="horizontal">
 
@@ -73,8 +79,7 @@
                 android:layout_marginLeft="2dp"
                 android:layout_marginTop="@dimen/main_panel_margin"
                 android:layout_weight="1.0"
-                android:background="@drawable/myrect"
-                android:backgroundTint="@color/black"
+                android:backgroundTint="@color/white"
                 android:elevation="10dp"
                 android:orientation="vertical">
 
@@ -86,7 +91,7 @@
                     android:layout_marginTop="10dp"
                     android:elevation="10dp"
                     android:src="@drawable/task_center"
-                    android:tint="@color/holo_blue_bright" />
+                    android:tint="@color/main_button_selected" />
 
                 <TextView
                     android:id="@+id/taskCenterText"
@@ -96,7 +101,8 @@
                     android:layout_marginBottom="10dp"
                     android:elevation="10dp"
                     android:text="任务中心"
-                    android:textColor="@color/holo_blue_bright" />
+                    android:textColor="@color/main_button_selected"
+                    />
             </LinearLayout>
 
             <LinearLayout
@@ -109,8 +115,7 @@
                 android:layout_marginRight="1dp"
                 android:layout_marginTop="@dimen/main_panel_margin"
                 android:layout_weight="1.0"
-                android:background="@drawable/myrect"
-                android:backgroundTint="@color/black"
+                android:backgroundTint="@color/white"
                 android:elevation="10dp"
                 android:orientation="vertical">
 
@@ -122,7 +127,7 @@
                     android:layout_marginTop="10dp"
                     android:elevation="10dp"
                     android:src="@drawable/my_task"
-                    android:tint="@color/gray" />
+                    android:tint="@color/main_button_noselect" />
 
                 <TextView
                     android:id="@+id/myTaskText"
@@ -132,7 +137,7 @@
                     android:layout_marginBottom="10dp"
                     android:elevation="10dp"
                     android:text="我的任务"
-                    android:textColor="@color/gray" />
+                    android:textColor="@color/main_button_noselect" />
             </LinearLayout>
 
             <LinearLayout
@@ -144,8 +149,7 @@
                 android:layout_marginRight="2dp"
                 android:layout_marginTop="@dimen/main_panel_margin"
                 android:layout_weight="1.0"
-                android:background="@drawable/myrect"
-                android:backgroundTint="@color/black"
+                android:backgroundTint="@color/white"
                 android:elevation="10dp"
                 android:orientation="vertical">
 
@@ -157,7 +161,7 @@
                     android:layout_marginTop="10dp"
                     android:elevation="10dp"
                     android:src="@drawable/personal_center_un"
-                    android:tint="@color/gray" />
+                    android:tint="@color/main_button_noselect" />
 
                 <TextView
                     android:id="@+id/personText"
@@ -167,7 +171,7 @@
                     android:layout_marginBottom="10dp"
                     android:elevation="10dp"
                     android:text="个人中心"
-                    android:textColor="@color/gray" />
+                    android:textColor="@color/main_button_noselect" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

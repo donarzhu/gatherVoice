@@ -20,6 +20,7 @@ class global {
         var id: Int = 0
         var sendFileHandler: Handler? = null
         var sendDataHandler: Handler? = null
+        var SysVersion = ""
         private fun cmdVerifyCode_post(): String = serverUri + "/api/user/_app/sms/vcode/"
         private fun cmdRegister_post(): String = serverUri + "/api/user/register/"
         private fun cmdLogin_post(): String = serverUri + "/api/user/login/"
@@ -470,6 +471,12 @@ class global {
                 Pair("天津话" , 13) , Pair("广东话" , 14) , Pair("四川话" , 15) , Pair("山东话" , 16) , Pair("东北话" , 17) ,
                 Pair("河南话" , 18) , Pair("台湾话" , 19))
 
+        private val banks:Array<String> = arrayOf("工商银行","建设银行","农业银行","中国银行","招商银行")
+
+        fun getBankArray():Array<String>
+        {
+            return banks
+        }
         fun getDialectArray(): Array<String> {
             return dialectMap.keys.toTypedArray()
         }

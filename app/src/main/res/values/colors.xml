@@ -25,4 +25,7 @@
     <color name="holo_blue_bright">#ff00ddff</color>
     <color name="my_button_color">#85c3fe</color>
     <color name="my_hit_color">#d7d7d7</color>
+    <color name="main_button_selected">#85c3fe</color>
+    <color name="main_button_noselect">#8f8f8f</color>
+    <color name="main_back">#fafafa</color>
 </resources>

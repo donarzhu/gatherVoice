@@ -73,7 +73,7 @@ class Login : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        var version = android.os.Build.VERSION.RELEASE
+        global.SysVersion = android.os.Build.VERSION.RELEASE
 
         try {
             //window.requestFeature(Window.FEATURE_CONTENT_TRANSITIONS)
@@ -100,7 +100,7 @@ class Login : AppCompatActivity() {
                     inputPwd.text.append(info.password)
                 }
             }
-            if(version.substring(0,1).toFloat() >= 6) {
+            if(global.SysVersion.substring(0,1).toFloat() >= 6) {
                 if (checkSelfPermission(RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
                     val perms = arrayOf("android.permission.RECORD_AUDIO")
                     val permsRequestCode = 200
@@ -132,7 +132,7 @@ class Login : AppCompatActivity() {
         }
         loginButton.setOnClickListener{
 
-            if(version.substring(0,1).toFloat() >= 7) {
+            if(global.SysVersion.substring(0,1).toFloat() >= 7) {
                 if (!bCanRecord || !bCanWrite || !bNet) {
                     AlertDialog.Builder(this@Login).setTitle("系统提示")//设置对话框标题
 
