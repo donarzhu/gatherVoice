@@ -19,6 +19,9 @@ class SetupPage : AppCompatActivity() {
             var intent = Intent(this,UserMessagePage::class.java)
             startActivity(intent)
         }
+        backButton.setOnClickListener{
+            finish()
+        }
 
     }
 }
