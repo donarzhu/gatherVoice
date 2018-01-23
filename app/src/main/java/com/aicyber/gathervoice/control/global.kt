@@ -37,18 +37,19 @@ class global {
         private fun cmdUpdateUserInfo_patch(): String = serverUri + "/api/user/info/"
         private fun cmdGetUserInfo_get(): String = serverUri + "/api/user/info/"
         private fun cmdMessage_get(): String = serverUri + "/api/user/note/"
-        private fun cmdRestPwd(): String = serverUri + "/api/user/_app/password/rest/"
+        private fun cmdRestPwd(): String = serverUri + "/api/user/_app/password/reset/"
         private fun cmdChangePwd(): String = serverUri + "/api/user/password/change/"
         private fun cmdWithdrawCash_post(): String = serverUri + "/api/user/_app/wage/"
-        private fun cmdCreateUserMessage_post():String = serverUri +"api/user/issue/"
+        private fun cmdCreateUserMessage_post():String = serverUri +"/api/user/issue/"
 
         fun userMessage(handler: Handler,message:String)
         {
             thread {
                 kotlin.run {
-                    var uri = cmdWithdrawCash_post()
+                    var uri = cmdCreateUserMessage_post()
                     var para: JSONObject = JSONObject().put("t1" , message)
-                    para.put("u2",null)
+                    para.put("u2",0)
+
                     var ret = httpControlFunc.instance.post(uri , para , token)
                     if (!ret.isNullOrEmpty()) {
                         var msg = Message()
@@ -127,11 +128,12 @@ class global {
 
         }
 
-        fun resetPwd(handler: Handler , newPwd: String , code: String) {
+        fun resetPwd(handler: Handler , tel:String,newPwd: String , code: String) {
             thread {
                 kotlin.run {
                     var uri = cmdRestPwd()
-                    var para: JSONObject = JSONObject().put("new_password" , newPwd)
+                    var para: JSONObject = JSONObject().put("tel",tel)
+                    para.put("new_password" , newPwd)
                     para.put("code" , code)
                     var ret = httpControlFunc.instance.post(uri , para , null)
                     if (!ret.isNullOrEmpty()) {

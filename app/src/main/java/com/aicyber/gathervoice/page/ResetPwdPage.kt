@@ -16,7 +16,6 @@ class ResetPwdPage : AppCompatActivity() {
     {
         var message:String = ""
     }
-    private var vcode = "000000"
     var handler: Handler = @SuppressLint("HandlerLeak")
     object : Handler(){
         override fun handleMessage(msg: Message?) {
@@ -26,7 +25,6 @@ class ResetPwdPage : AppCompatActivity() {
                 {
                     1->{
                         getCode.text.clear()
-                        getCode.text.append("000000")
                     }
                     2,31,32->{
                         var retData = msg.data.get("info").toString()
@@ -69,12 +67,14 @@ class ResetPwdPage : AppCompatActivity() {
 
         }
         finalButton.setOnClickListener{
+            var tel = inputName.text.toString()
+            var vcode = getCode.text.toString()
             var pwd = inputPwd.text.toString()
             var repwd = reinputPwd.text.toString()
             var error = false
-            if(pwd.length <= 6)
+            if(pwd.length < 6)
             {
-                Toast.makeText(this@ResetPwdPage,"请输入6为以上的密码",Toast.LENGTH_LONG).show()
+                Toast.makeText(this@ResetPwdPage,"请输入6位以上的密码",Toast.LENGTH_LONG).show()
                 error = true
             }
             if(pwd != repwd)
@@ -82,9 +82,13 @@ class ResetPwdPage : AppCompatActivity() {
                 Toast.makeText(this@ResetPwdPage,"两次密码输入不一致",Toast.LENGTH_LONG).show()
                 error = true
             }
-            if(getCode.text.toString() != vcode)
+            if(vcode.length == 6)
             {
-                global.resetPwd(handler,pwd,vcode)
+                global.resetPwd(handler,tel,pwd,vcode)
+            }
+            else
+            {
+                Toast.makeText(this@ResetPwdPage,"请输入正确的验证码",Toast.LENGTH_LONG).show()
             }
 
         }

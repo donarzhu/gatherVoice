@@ -33,8 +33,6 @@ class RegisterPhone : AppCompatActivity() {
                 when(msg!!.what)
                 {
                     1->{
-                        getCode.text.clear()
-                        getCode.text.append("000000")
                     }
                 }
 
@@ -91,7 +89,7 @@ class RegisterPhone : AppCompatActivity() {
             val phone = inputName.text.toString()
             val pwd = inputPwd.text.toString()
             val repwd = reinputPwd.text.toString()
-            if(vCode != "000000")
+            if(vCode.isNullOrEmpty())
             {
                 Toast.makeText(this@RegisterPhone,"验证码错误", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener

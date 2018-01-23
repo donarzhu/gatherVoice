@@ -95,6 +95,11 @@ class PersonCenterFragment : Fragment() {
                     user_place.text = dialectString
                 }
 
+                if(!retMsg.bank.isNullOrEmpty())
+                {
+                    var bankInfo:String = "已绑定"+retMsg.bank+" 卡号:"+"*****"+retMsg.card_no?.substring(retMsg.card_no!!.length - 3)
+                    binding_text.text = bankInfo
+                }
                 get_money.setOnClickListener{
                     var intent = Intent(context,withdrawCashPage::class.java)
                     intent.putExtra("cash",retMsg.reward)

@@ -26,12 +26,15 @@ class UserMessagePage : AppCompatActivity() {
         setContentView(R.layout.activity_user_message_page)
         submit_user.setOnClickListener{
             var message = Edit_Message.text.toString()
-            if(message.length<10)
+            if(message.length<4)
             {
                 Toast.makeText(this,"内容太短，请写详细写！",Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
             global.userMessage(handler,message)
+        }
+        backButton.setOnClickListener {
+            finish()
         }
     }
 }

@@ -70,8 +70,8 @@ public class TaskViewAdapter(context:Context,list:ArrayList<TaskInfo>) : BaseAda
                 if(!taskInfo.memo.isEmpty())
                     view.my_task_desc.text = taskInfo.memo
                 when(listType){
-                    VoiceTypeList->if(!taskInfo.finish_at.isEmpty())view.my_task_status.text = "截止日期："+taskInfo.finish_at.subSequence(0,9)
-                    CheckTypeList->if(!taskInfo.v_finish_at.isEmpty())view.my_task_status.text = "截止日期："+taskInfo.v_finish_at.subSequence(0,9)
+                    VoiceTypeList->if(!taskInfo.finish_at.isEmpty())view.my_task_status.text = "截止日期："+taskInfo.finish_at.subSequence(0,10)
+                    CheckTypeList->if(!taskInfo.v_finish_at.isEmpty())view.my_task_status.text = "截止日期："+taskInfo.v_finish_at.subSequence(0,10)
                 }
                 when(listType ){
                     VoiceTypeList-> {

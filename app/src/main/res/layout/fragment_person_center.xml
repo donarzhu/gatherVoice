@@ -251,6 +251,7 @@
                     android:src="@drawable/bank"
                     />
                 <TextView
+                    android:id="@+id/binding_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/person_page_text_size"
