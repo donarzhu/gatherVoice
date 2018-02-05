@@ -78,6 +78,9 @@ class checkTaskPage : AppCompatActivity() {
         var id = data.getIntExtra("id",0)
         var result = data.getStringExtra("result")
         var fDate = data.getStringExtra("finish_at")
+        var info:VerifyItemInfo = currentView?.tag as VerifyItemInfo
+        info.result = result
+        info.finish_at = fDate
         when(result)
         {
             "pass"-> currentView!!.check_status.text ="通过"

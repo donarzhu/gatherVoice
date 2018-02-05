@@ -16,7 +16,10 @@ class UserMessagePage : AppCompatActivity() {
         override fun handleMessage(msg: Message?) {
             when(msg?.what)
             {
-                39->finish()
+                39->{
+                    Toast.makeText(this@UserMessagePage,"提交成功",Toast.LENGTH_LONG).show()
+                    Edit_Message.text.clear()
+                }
                 40->Toast.makeText(this@UserMessagePage,"提交失败",Toast.LENGTH_LONG).show()
             }
         }
