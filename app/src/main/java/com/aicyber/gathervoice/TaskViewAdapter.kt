@@ -54,11 +54,17 @@ public class TaskViewAdapter(context:Context,list:ArrayList<TaskInfo>) : BaseAda
                     view.task_name.text = taskInfo.name
                 if(!taskInfo.memo.isEmpty())
                     view.task_desc.text = taskInfo.memo
-                if(!taskInfo.status.isEmpty())
-                    view.task_status.text = taskInfo.status
+                //if(!taskInfo.status.isEmpty())
+                    //view.task_status.text = taskInfo.status
                 when(listType ){
-                    VoiceTypeList->if(!taskInfo.reward.isEmpty()) view.task_price.text = (taskInfo.reward.toFloat()*taskInfo.item_count).toString()
-                    CheckTypeList->if(!taskInfo.v_reward.isEmpty()) view.task_price.text = (taskInfo.v_reward.toFloat()*taskInfo.item_count).toString()
+                    VoiceTypeList->{
+                        if(!taskInfo.reward.isEmpty()) view.task_price.text = (taskInfo.reward.toFloat()*taskInfo.item_count).toString()
+                        if(!taskInfo.finish_at.isEmpty())view.task_status.text = "截止日期："+taskInfo.finish_at.subSequence(0,10)
+                    }
+                    CheckTypeList->{
+                        if(!taskInfo.v_reward.isEmpty()) view.task_price.text = (taskInfo.v_reward.toFloat()*taskInfo.item_count).toString()
+                        if(!taskInfo.v_finish_at.isEmpty())view.task_status.text = "截止日期："+taskInfo.v_finish_at.subSequence(0,10)
+                    }
                 }
                 return view
             }

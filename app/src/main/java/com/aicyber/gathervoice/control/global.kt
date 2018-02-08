@@ -42,6 +42,22 @@ class global {
         private fun cmdWithdrawCash_post(): String = serverUri + "/api/user/_app/wage/"
         private fun cmdCreateUserMessage_post():String = serverUri +"/api/user/issue/"
 
+        private fun sendMessage(handler: Handler,ret:String,sCode:Int,fCode:Int)
+        {
+            var msg = Message()
+            if (!ret.isNullOrEmpty()) {
+                msg.data.putString("info" , ret)
+                if (httpControlFunc.isSucceed)
+                    msg.what = sCode
+                else
+                    msg.what = fCode
+            }
+            else
+            {
+                msg.what = -1
+            }
+            handler.sendMessage(msg)
+        }
         fun userMessage(handler: Handler,message:String)
         {
             thread {
@@ -51,16 +67,7 @@ class global {
                     para.put("u2",0)
 
                     var ret = httpControlFunc.instance.post(uri , para , token)
-                    if (!ret.isNullOrEmpty()) {
-                        var msg = Message()
-                        msg.data.putString("info" , ret)
-                        if (httpControlFunc.isSucceed)
-                            msg.what = 39
-                        else
-                            msg.what = 40
-                        handler.sendMessage(msg)
-                    }
-
+                    sendMessage(handler,ret,39,40)
                 }
             }
         }
@@ -73,15 +80,7 @@ class global {
                     para.put("bank" , bank)
                     para.put("card_no" , card_no)
                     var ret = httpControlFunc.instance.patch(uri , para , token)
-                    if (!ret.isNullOrEmpty()) {
-                        var msg = Message()
-                        msg.data.putString("info" , ret)
-                        if (httpControlFunc.isSucceed)
-                            msg.what = 37
-                        else
-                            msg.what = 38
-                        handler.sendMessage(msg)
-                    }
+                    sendMessage(handler,ret,37,38)
                 }
             }
         }
@@ -92,16 +91,7 @@ class global {
                     var uri = cmdWithdrawCash_post()
                     var para: JSONObject = JSONObject().put("money" , money)
                     var ret = httpControlFunc.instance.post(uri , para , token)
-                    if (!ret.isNullOrEmpty()) {
-                        var msg = Message()
-                        msg.data.putString("info" , ret)
-                        if (httpControlFunc.isSucceed)
-                            msg.what = 35
-                        else
-                            msg.what = 36
-                        handler.sendMessage(msg)
-                    }
-
+                    sendMessage(handler,ret,35,36)
                 }
             }
         }
@@ -113,16 +103,7 @@ class global {
                     var para: JSONObject = JSONObject().put("current_password" , oldPwd)
                     para.put("new_password" , newPwd)
                     var ret = httpControlFunc.instance.post(uri , para , token)
-                    if (!ret.isNullOrEmpty()) {
-                        var msg = Message()
-                        msg.data.putString("info" , ret)
-                        if (httpControlFunc.isSucceed)
-                            msg.what = 33
-                        else
-                            msg.what = 34
-                        handler.sendMessage(msg)
-                    }
-
+                    sendMessage(handler,ret,33,34)
                 }
             }
 
@@ -136,16 +117,7 @@ class global {
                     para.put("new_password" , newPwd)
                     para.put("code" , code)
                     var ret = httpControlFunc.instance.post(uri , para , null)
-                    if (!ret.isNullOrEmpty()) {
-                        var msg = Message()
-                        msg.data.putString("info" , ret)
-                        if (httpControlFunc.isSucceed)
-                            msg.what = 31
-                        else
-                            msg.what = 32
-                        handler.sendMessage(msg)
-                    }
-
+                    sendMessage(handler,ret,31,32)
                 }
             }
         }
@@ -157,15 +129,7 @@ class global {
                     var uri = cmdVerifyCode_post()
                     var para: JSONObject = JSONObject().put("tel" , phone)
                     var ret = httpControlFunc.instance.post(uri , para , null)
-                    if (!ret.isNullOrEmpty()) {
-                        var msg = Message()
-                        msg.data.putString("info" , ret)
-                        if (httpControlFunc.isSucceed)
-                            msg.what = 1
-                        else
-                            msg.what = 2
-                        handler.sendMessage(msg)
-                    }
+                    sendMessage(handler,ret,1,2)
                 }
             }
         }
@@ -236,13 +200,7 @@ class global {
                     val uri = cmdVoiceTaskList_get()
                     var ret = httpControlFunc.instance.get(uri , token)
                     var msg = Message()
-                    if (!ret.isNullOrEmpty()) {
-                        msg.data.putString("info" , ret)
-                        if (httpControlFunc.isSucceed) {
-                            msg.what = 7
-                            handler.sendMessage(msg)
-                        }
-                    }
+                    sendMessage(handler,ret,7,-1)
                 }
             }
         }
@@ -253,13 +211,7 @@ class global {
                     val uri = cmdVerifyTaskList_get()
                     var ret = httpControlFunc.instance.get(uri , token)
                     var msg = Message()
-                    if (!ret.isNullOrEmpty()) {
-                        msg.data.putString("info" , ret)
-                        if (httpControlFunc.isSucceed) {
-                            msg.what = 8
-                            handler.sendMessage(msg)
-                        }
-                    }
+                    sendMessage(handler,ret,8,-1)
                 }
             }
         }
@@ -270,13 +222,7 @@ class global {
                     val uri = cmdMyTaskList_get()
                     var ret = httpControlFunc.instance.get(uri , token)
                     var msg = Message()
-                    if (!ret.isNullOrEmpty()) {
-                        msg.data.putString("info" , ret)
-                        if (httpControlFunc.isSucceed) {
-                            msg.what = 9
-                            handler.sendMessage(msg)
-                        }
-                    }
+                    sendMessage(handler,ret,9,-1)
                 }
             }
         }
@@ -287,13 +233,7 @@ class global {
                     val uri = cmdMyVerifyList_get()
                     var ret = httpControlFunc.instance.get(uri , token)
                     var msg = Message()
-                    if (!ret.isNullOrEmpty()) {
-                        msg.data.putString("info" , ret)
-                        if (httpControlFunc.isSucceed) {
-                            msg.what = 10
-                            handler.sendMessage(msg)
-                        }
-                    }
+                    sendMessage(handler,ret,10,-1)
                 }
             }
         }
@@ -307,15 +247,7 @@ class global {
                     var param = mapOf(Pair("item_id" , item_id.toString()))
                     var ret = httpControlFunc.instance.uploadfile(uri , item_id , _file , token)
                     var msg = Message()
-                    if (!ret.isNullOrEmpty()) {
-                        msg.data.putString("info" , ret)
-                        if (httpControlFunc.isSucceed) {
-                            msg.what = 11
-                        } else {
-                            msg.what = 12
-                        }
-                        handler.sendMessage(msg)
-                    }
+                    sendMessage(handler,ret,11,12)
                 }
             }
         }
@@ -326,13 +258,7 @@ class global {
                     val uri = cmdVoiceTaskItems_get(item_id)
                     var ret = httpControlFunc.instance.get(uri , token)
                     var msg = Message()
-                    if (!ret.isNullOrEmpty()) {
-                        msg.data.putString("info" , ret)
-                        if (httpControlFunc.isSucceed) {
-                            msg.what = 13
-                            handler.sendMessage(msg)
-                        }
-                    }
+                    sendMessage(handler,ret,13,-1)
                 }
             }
         }
@@ -343,15 +269,7 @@ class global {
                     val uri = cmdTodoVoiceTask_get(task_id)
                     var ret = httpControlFunc.instance.get(uri , token)
                     var msg = Message()
-                    if (!ret.isNullOrEmpty()) {
-                        msg.data.putString("info" , ret)
-                        if (httpControlFunc.isSucceed) {
-                            msg.what = 15
-                        } else {
-                            msg.what = 16
-                        }
-                        handler.sendMessage(msg)
-                    }
+                    sendMessage(handler,ret,15,16)
                 }
             }
         }
@@ -362,15 +280,7 @@ class global {
                     val uri = cmdToduVerityTask_get(task_id)
                     var ret = httpControlFunc.instance.get(uri , token)
                     var msg = Message()
-                    if (!ret.isNullOrEmpty()) {
-                        msg.data.putString("info" , ret)
-                        if (httpControlFunc.isSucceed) {
-                            msg.what = 17
-                        } else {
-                            msg.what = 18
-                        }
-                        handler.sendMessage(msg)
-                    }
+                    sendMessage(handler,ret,17,18)
                 }
             }
         }
@@ -381,13 +291,7 @@ class global {
                     val uri = cmdVerifyItems_get(task_id)
                     var ret = httpControlFunc.instance.get(uri , token)
                     var msg = Message()
-                    if (!ret.isNullOrEmpty()) {
-                        msg.data.putString("info" , ret)
-                        if (httpControlFunc.isSucceed) {
-                            msg.what = 19
-                            handler.sendMessage(msg)
-                        }
-                    }
+                    sendMessage(handler,ret,19,-1)
                 }
             }
         }
@@ -400,15 +304,7 @@ class global {
                     para.put("result" , result)
                     para.put("review" , review)
                     var ret = httpControlFunc.instance.patch(uri , para , token)
-                    if (!ret.isNullOrEmpty()) {
-                        var msg = Message()
-                        msg.data.putString("info" , ret)
-                        if (httpControlFunc.isSucceed)
-                            msg.what = 21
-                        else
-                            msg.what = 22
-                        handler.sendMessage(msg)
-                    }
+                    sendMessage(handler,ret,21,22)
                 }
             }
         }
@@ -421,15 +317,7 @@ class global {
                     para.put("age" , age)
                     para.put("place" , place)
                     var ret = httpControlFunc.instance.patch(uri , para , token)
-                    if (!ret.isNullOrEmpty()) {
-                        var msg = Message()
-                        msg.data.putString("info" , ret)
-                        if (httpControlFunc.isSucceed)
-                            msg.what = 23
-                        else
-                            msg.what = 24
-                        handler.sendMessage(msg)
-                    }
+                    sendMessage(handler,ret,23,24)
                 }
             }
         }
@@ -440,13 +328,7 @@ class global {
                     val uri = cmdGetUserInfo_get()
                     var ret = httpControlFunc.instance.get(uri , token)
                     var msg = Message()
-                    if (!ret.isNullOrEmpty()) {
-                        msg.data.putString("info" , ret)
-                        if (httpControlFunc.isSucceed) {
-                            msg.what = 25
-                            handler.sendMessage(msg)
-                        }
-                    }
+                    sendMessage(handler,ret,25,-1)
                 }
             }
         }
@@ -457,13 +339,7 @@ class global {
                     val uri = cmdMessage_get()
                     var ret = httpControlFunc.instance.get(uri , token)
                     var msg = Message()
-                    if (!ret.isNullOrEmpty()) {
-                        msg.data.putString("info" , ret)
-                        if (httpControlFunc.isSucceed) {
-                            msg.what = 27
-                            handler.sendMessage(msg)
-                        }
-                    }
+                    sendMessage(handler,ret,27,-1)
                 }
             }
         }

@@ -43,6 +43,9 @@ class verifyItemPage : AppCompatActivity() {
                         setResult(Activity.RESULT_OK,intent)
                         finish()
                     }
+                    -1-> {
+                        Toast.makeText(this@verifyItemPage , "网络连接失败请稍后再试！" , Toast.LENGTH_LONG).show()
+                    }
                 }
             }
             catch (e:Exception)

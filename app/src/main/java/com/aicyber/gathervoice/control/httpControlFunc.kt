@@ -26,11 +26,11 @@ class httpControlFunc private constructor(){
         var isSucceed = false
     }
 
-    fun patch(url:String,para:JSONObject,tokenCode: String?):String?
+    fun patch(url:String,para:JSONObject,tokenCode: String?):String
     {
         return post(url,para,tokenCode,true)
     }
-    fun post(url:String,para:JSONObject,tokenCode: String?,isPatch:Boolean = false):String?
+    fun post(url:String,para:JSONObject,tokenCode: String?,isPatch:Boolean = false):String
     {
         isSucceed = false
         val JSON = MediaType.parse("application/json; charset=utf-8")
@@ -120,7 +120,7 @@ class httpControlFunc private constructor(){
         return result;
     }
 */
-    fun get(url: String,tokenCode: String?):String?
+    fun get(url: String,tokenCode: String?):String
     {
         isSucceed = false
         var ret=""
@@ -170,7 +170,7 @@ class httpControlFunc private constructor(){
 */
     val TAG = "UploadHelper"
 
-    fun uploadfile(url: String, item_id: Int, file: File,tokenCode: String?): String? {
+    fun uploadfile(url: String, item_id: Int, file: File,tokenCode: String?): String {
         isSucceed = false
         val fileBody = RequestBody.create(MediaType.parse("audio/wave"), file)   //application/octet-stream //audio/x-wav
         val type = MediaType.parse("application/json; charset=utf-8")
@@ -212,7 +212,7 @@ class httpControlFunc private constructor(){
             e.printStackTrace()
         }
 
-        return null
+        return ""
     }
 
 }

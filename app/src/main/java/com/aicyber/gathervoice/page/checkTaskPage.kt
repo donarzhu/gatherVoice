@@ -9,6 +9,7 @@ import android.os.Handler
 import android.os.Message
 import android.view.View
 import android.widget.AdapterView
+import android.widget.Toast
 import com.aicyber.gathervoice.R
 import com.aicyber.gathervoice.control.global
 import com.aicyber.gathervoice.data.TaskInfo
@@ -62,6 +63,9 @@ class checkTaskPage : AppCompatActivity() {
                             }
                         }}
                     }
+                    -1->{
+                        Toast.makeText(my,"网络连接失败请稍后再试！",Toast.LENGTH_LONG).show()
+                    }
                 }
             }
         }
@@ -86,7 +90,6 @@ class checkTaskPage : AppCompatActivity() {
             "pass"-> currentView!!.check_status.text ="通过"
             "fail"-> currentView!!.check_status.text ="错误"
         }
-
     }
 
     private var taskinfo:TaskInfo? = null
@@ -126,8 +129,6 @@ class checkTaskPage : AppCompatActivity() {
             i++
         }
         */
-
-
     }
 
 }
