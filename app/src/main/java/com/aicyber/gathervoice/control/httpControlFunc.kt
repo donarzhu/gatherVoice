@@ -34,7 +34,8 @@ class httpControlFunc private constructor(){
     {
         isSucceed = false
         val JSON = MediaType.parse("application/json; charset=utf-8")
-        val body = RequestBody.create(JSON, para.toString())
+        val stringJson = para.toString()
+        val body = RequestBody.create(JSON, stringJson)
         var result = ""
 
         try {
@@ -71,10 +72,8 @@ class httpControlFunc private constructor(){
 
             val call = okHttpClient.newCall(request)
             val response = call.execute()
-            if(response.isSuccessful) {
-                result = response.body().string()
-                isSucceed = true
-            }
+            isSucceed = response.isSuccessful
+            result = response.body().string()
 
         }
         catch (e:Exception)

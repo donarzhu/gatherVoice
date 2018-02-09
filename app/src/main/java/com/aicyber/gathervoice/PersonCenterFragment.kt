@@ -43,12 +43,13 @@ class PersonCenterFragment : Fragment() {
         var id_no:String?=null // "120100199001011234",
         var bank:String?= null // "农业银行",
         var card_no:String?= null // "6200187201011234",
+        /*
         var ti_correct=0
         var ti_all=0
         var vi_correct=0
         var vi_all = 0
-        var ti_crate=1
-        var vi_crate=1
+        var ti_crate=1.0
+        var vi_crate=1.0
         var wx_openId:String?= null
         var wx_nickName:String?= null
         var wx_avatarUrl:String? = null
@@ -57,6 +58,7 @@ class PersonCenterFragment : Fragment() {
         var wx_country:String?= null
         var wx_bind_at:String? = null
         var wx_login_at:String? = null
+        */
     }
 
     var handler: Handler = @SuppressLint("HandlerLeak")

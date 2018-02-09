@@ -11,6 +11,9 @@ import com.aicyber.gathervoice.control.global
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_withdraw_cash_page.*
 import java.text.DecimalFormat
+import org.json.JSONObject
+
+
 
 class withdrawCashPage : AppCompatActivity() {
     private inner class RetultErrorMessge
@@ -32,7 +35,7 @@ class withdrawCashPage : AppCompatActivity() {
                     35->{
                         Toast.makeText(this@withdrawCashPage,"提现申请已提交！",Toast.LENGTH_LONG).show()
                     }
-                    35->{
+                    36->{
                         try {
                             var retData = msg.data.get("info").toString()
                             if(retData.indexOf("non_field_errors")>=0)
@@ -40,10 +43,16 @@ class withdrawCashPage : AppCompatActivity() {
                                 val errorInfo:RetultErrorMessge? = Gson().fromJson(retData,RetultErrorMessge::class.java)
                                 Toast.makeText(this@withdrawCashPage,errorInfo?.non_field_errors?.get(0),Toast.LENGTH_LONG).show()
                             }
-                            if(retData.indexOf("money")>=0)
+                            else if(retData.indexOf("money")>=0)
                             {
                                 val errorInfo:RetultMessge? = Gson().fromJson(retData,RetultMessge::class.java)
                                 Toast.makeText(this@withdrawCashPage,errorInfo?.money?.get(0),Toast.LENGTH_LONG).show()
+                            }
+                            else
+                            {
+                                val jsonObject = JSONObject(retData)
+                                val errorInfo = jsonObject.get("error")
+                                Toast.makeText(this@withdrawCashPage,errorInfo.toString(),Toast.LENGTH_LONG).show()
                             }
 
                         }

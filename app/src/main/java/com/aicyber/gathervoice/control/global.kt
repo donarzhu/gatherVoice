@@ -39,7 +39,7 @@ class global {
         private fun cmdMessage_get(): String = serverUri + "/api/user/note/"
         private fun cmdRestPwd(): String = serverUri + "/api/user/_app/password/reset/"
         private fun cmdChangePwd(): String = serverUri + "/api/user/password/change/"
-        private fun cmdWithdrawCash_post(): String = serverUri + "/api/user/_app/wage/"
+        private fun cmdWithdrawCash_post(): String = serverUri + "/api/user/_app/wage2/"
         private fun cmdCreateUserMessage_post():String = serverUri +"/api/user/issue/"
 
         private fun sendMessage(handler: Handler,ret:String,sCode:Int,fCode:Int)
@@ -71,6 +71,7 @@ class global {
                 }
             }
         }
+
         fun bindingHankCard(handler: Handler ,pwd:String, id_no: String , bank: String , card_no: String) {
             thread {
                 kotlin.run {
@@ -89,7 +90,7 @@ class global {
             thread {
                 kotlin.run {
                     var uri = cmdWithdrawCash_post()
-                    var para: JSONObject = JSONObject().put("money" , money)
+                    var para: JSONObject = JSONObject().put("money_str" , money.toString())
                     var ret = httpControlFunc.instance.post(uri , para , token)
                     sendMessage(handler,ret,35,36)
                 }
