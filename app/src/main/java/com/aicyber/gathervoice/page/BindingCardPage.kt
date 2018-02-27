@@ -34,6 +34,7 @@ class BindingCardPage : AppCompatActivity() {
             var id_no = inputIDNumber.text.toString()
             var card = inputCard.text.toString()
             var bank = bank_name_Spinner.selectedItem.toString()
+            var name = inputUserName.text.toString()
             if(pwd.length < 6)
             {
                 Toast.makeText(this,"输入密码太短，请重新输入",Toast.LENGTH_LONG).show()
@@ -54,7 +55,12 @@ class BindingCardPage : AppCompatActivity() {
                 Toast.makeText(this,"银行卡号输入有误",Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
-            global.bindingHankCard(handler,pwd,id_no,bank,card)
+            if(name.length<2)
+            {
+                Toast.makeText(this,"姓名错误",Toast.LENGTH_LONG).show()
+                return@setOnClickListener
+            }
+            global.bindingHankCard(handler,pwd,name,id_no,bank,card)
         }
         backButton.setOnClickListener{
             finish()

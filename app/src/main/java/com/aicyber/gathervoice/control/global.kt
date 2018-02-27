@@ -72,11 +72,12 @@ class global {
             }
         }
 
-        fun bindingHankCard(handler: Handler ,pwd:String, id_no: String , bank: String , card_no: String) {
+        fun bindingHankCard(handler: Handler ,pwd:String,fullName:String, id_no: String , bank: String , card_no: String) {
             thread {
                 kotlin.run {
                     var uri = cmdUpdateUserInfo_patch()
                     var para: JSONObject = JSONObject().put("password",pwd)
+                    para.put("fullname",fullName)
                     para.put("id_no" , id_no)
                     para.put("bank" , bank)
                     para.put("card_no" , card_no)
